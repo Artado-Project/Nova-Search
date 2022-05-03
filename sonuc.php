@@ -195,6 +195,7 @@ session_start();
         </div>
         <div class="card col-md-7 f-left" style="background-color: #3c3c3c; margin-left: -3px; max-width: 760px;">
             <div class="gcse-searchresults-only" id="GoogleImage" runat="server"></div>
+            <script async src="https://cse.google.com/cse.js?cx=89ecf14465e74f30b"></script>
         </div>
         <div class="card text-white f-right col-md-5" style="background-color: #3c3c3c; margin-left: 0px;">
             <?php
@@ -565,7 +566,8 @@ session_start();
             role="tabpanel"
             aria-labelledby="pills-profile-tab2"
     >
-        <div class="gcse-searchresults-only" id="GoogleImage" ></div>
+        <script async src="https://cse.google.com/cse.js?cx=dd22c89c3839dc275"></script>
+        <div class="gcse-searchresults-only" id="image"></div>
     </div>
     <div
             class="tab-pane fade"
@@ -595,7 +597,6 @@ session_start();
 </div>
 </div>
 
-<script async src="https://cse.google.com/cse.js?cx=89ecf14465e74f30b"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
