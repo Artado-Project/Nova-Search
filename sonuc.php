@@ -27,24 +27,24 @@ session_start();
 <body style="background-color: #333333">
 <div class="container">
     <div class="row d-flex justify-content-center align-items-center" style="margin-top: -40px">
-            <img src="images/loli.png" class="img-fluid mb-3" style="max-width: 250px; max-height: 250px;"><br>
-            <div class="col-md-6">
-                <div class="form">
-                    <form method="get" action="sonuc.php">
-                        <i class="bi-search" style="margin-top: 5px;"></i>
-                        <input type="text" class="form-control form-input" id="inputValue" value="<?php $q = @$_GET['q']; if($q == ""){$q = 'Loli Search';} echo $q; ?>" aria-label="Search" aria-describedby="basic-addon2" name="q" placeholder="Herhangi birşey aratın...">
-                        <span class="sol-taraf">
+        <img src="images/loli.png" class="img-fluid mb-3" style="max-width: 250px; max-height: 250px;"><br>
+        <div class="col-md-6">
+            <div class="form">
+                <form method="get" action="sonuc.php">
+                    <i class="bi-search" style="margin-top: 5px;"></i>
+                    <input type="text" class="form-control form-input" id="inputValue" value="<?php $q = @$_GET['q']; if($q == ""){$q = 'Loli Search';} echo $q; ?>" aria-label="Search" aria-describedby="basic-addon2" name="q" placeholder="Herhangi birşey aratın...">
+                    <span class="sol-taraf">
                                 <a href="index.php" class="text-dark"><i class="bi-house"></i> </a>
                         </span>
-                    </form>
-                </div>
+                </form>
             </div>
         </div>
-        <ul class="nav nav-pills mb-3 justify-content-center" id="pills-tab2" role="tablist" style="margin-top: 30px">
+    </div>
+    <ul class="nav nav-pills mb-3 justify-content-center" id="pills-tab2" role="tablist" style="margin-top: 30px">
 
-            <li class="nav-item" role="presentation">
+        <li class="nav-item" role="presentation">
 
-                <button
+            <button
                     class="nav-link active"
                     id="pills-home-tab2"
                     data-mdb-toggle="pill"
@@ -53,12 +53,12 @@ session_start();
                     role="tab"
                     aria-controls="pills-home"
                     aria-selected="true"
-                >
-                    Web
-                </button>
-            </li>
-            <li class="nav-item" role="presentation">
-                <button
+            >
+                Web
+            </button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button
                     class="nav-link"
                     id="pills-profile-tab2"
                     data-mdb-toggle="pill"
@@ -67,12 +67,12 @@ session_start();
                     role="tab"
                     aria-controls="pills-profile"
                     aria-selected="false"
-                >
-                    Görsel
-                </button>
-            </li>
-            <li class="nav-item" role="presentation">
-                <button
+            >
+                Görsel
+            </button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button
                     class="nav-link"
                     id="pills-contact-tab2"
                     data-mdb-toggle="pill"
@@ -81,12 +81,12 @@ session_start();
                     role="tab"
                     aria-controls="pills-contact"
                     aria-selected="false"
-                >
-                    Bilgi
-                </button>
-            </li>
-            <li class="nav-item" role="presentation">
-                <button
+            >
+                Bilgi
+            </button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button
                     class="nav-link"
                     id="pills-contact-tab2"
                     data-mdb-toggle="pill"
@@ -95,12 +95,12 @@ session_start();
                     role="tab"
                     aria-controls="pills-contact"
                     aria-selected="false"
-                >
-                    Anime
-                </button>
-            </li>
-            <li class="nav-item" role="presentation">
-                <button
+            >
+                Anime
+            </button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button
                     class="nav-link"
                     id="pills-contact-tab2"
                     data-mdb-toggle="pill"
@@ -109,58 +109,58 @@ session_start();
                     role="tab"
                     aria-controls="pills-contact"
                     aria-selected="false"
-                >
-                    Akademi
-                </button>
-            </li>
-        </ul>
-        <div class="tab-content" id="pills-tabContent2">
-            <div
-                    class="tab-pane fade show active"
-                    id="pills-home2"
-                    role="tabpanel"
-                    aria-labelledby="pills-home-tab2"
             >
-                <div class="card text-white mb-2" style="background-color: #3c3c3c;">
-                    <?php
-                    $card_wiki = $db->prepare("SELECT card_baslik, card_muted, card_text, card_image FROM tarayici_card_wiki ");
-                    $card_wiki->execute(array($q));
-                    $kontrol = $card_wiki->fetch(PDO::FETCH_ASSOC);
-                    if ($kontrol > 0) {
-                        $sorgu = "SELECT * FROM tarayici_card_wiki WHERE card_baslik LIKE '%$q%' LIMIT 1;";
-                        $sorgukontrol = $db->query($sorgu);
-                        while ($cikti = $sorgukontrol->fetch(PDO::FETCH_ASSOC)){
-                            echo '<div class="card-header text-center text-white">Loli Wiki</div><div class="card-header">
-                        <img src="'.$cikti['card_image'].'" class="rounded-1 f-right" style="max-width: 220px; max-height: 250px;"> 
+                Akademi
+            </button>
+        </li>
+    </ul>
+    <div class="tab-content" id="pills-tabContent2">
+        <div
+                class="tab-pane fade show active"
+                id="pills-home2"
+                role="tabpanel"
+                aria-labelledby="pills-home-tab2"
+        >
+            <div class="card text-white mb-2" style="background-color: #3c3c3c;">
+                <?php
+                $card_wiki = $db->prepare("SELECT card_baslik, card_muted, card_text, card_image FROM tarayici_card_wiki ");
+                $card_wiki->execute(array($q));
+                $kontrol = $card_wiki->fetch(PDO::FETCH_ASSOC);
+                if ($kontrol > 0) {
+                    $sorgu = "SELECT * FROM tarayici_card_wiki WHERE card_baslik LIKE '%$q%' LIMIT 1;";
+                    $sorgukontrol = $db->query($sorgu);
+                    while ($cikti = $sorgukontrol->fetch(PDO::FETCH_ASSOC)){
+                        echo '<div class="card-header text-center text-white">Loli Wiki</div><div class="card-header">
+                        <img src="'.$cikti['card_image'].'" class="rounded-1 f-right" style="max-width: 200px; max-height: 250px;"> 
                         <h1 class="fontlu">'. $cikti['card_baslik'] .'</h1>
                         <h5 class="text-muted fontlu">'. $cikti['card_muted'] .'</h5>
                         <br>
                         <p style="max-width: 1010x;" class="mb-5">'. $cikti['card_text'] .'...</p>
-                        <a href="'. $cikti['card_link'] .'"><div class="btn btn-outline-white" style="border-radius: 100px;" data-ripple-color="dark">'. $cikti['card_kaynak'] .'</div></div>
+                        <a href="'. $cikti['card_link'] .'"><div class="btn btn-outline-white" style="border-radius: 100px;" data-ripple-color="dark">'. $cikti['card_kaynak'] .'</div>
                         </a>';
-                            if($q == "lgbt" OR $q == "lgb" OR $q == "eşcinsel" OR $q == "eşcinsel evlilik" ){
-                                echo '<a href="https://tr.wikipedia.org/wiki/Ahlaks%C4%B1zl%C4%B1k"><div class="btn-sm btn-outline-warning f-right" style="border-radius: 100px;" data-ripple-color="dark">Ayrıca bakınız: Toplumda Ahlak Yapısı</div></a></div>';
-                            }
-
-
+                        if($q == "lgbt" OR $q == "lgb" OR $q == "eşcinsel" OR $q == "eşcinsel evlilik" ){
+                            echo '<a href="https://tr.wikipedia.org/wiki/Ahlaks%C4%B1zl%C4%B1k"><div class="btn-sm btn-outline-warning f-right" style="border-radius: 100px;" data-ripple-color="dark">Ayrıca bakınız: Toplumda Ahlak Yapısı</div></a>';
                         }
-                    }else{
-                        echo '<div class="card-header">
+                        echo '</div>';
+
+                    }
+                }else{
+                    echo '<div class="card-header">
                         <h1 class="text-center">Opps! bir hata meydana geldi!</h1>
                     </div>';
-                    }
-                    ?>
-                </div>
-                <div class="card text-white mb-2" style="background-color: #3c3c3c;">
-                    <?php
-                    $card_an = $db->prepare("SELECT user_card_title, user_card_muted, user_card_text, user_card_image, user_card_link, user_card_name, user_card_username FROM tarayici_card_anime_users ");
-                    $card_an->execute(array($q));
-                    $kontrol_an = $card_an->fetch(PDO::FETCH_ASSOC);
-                    if ($kontrol_an > 0) {
-                        $sorgu = "SELECT * FROM tarayici_card_anime_users WHERE user_card_title LIKE '%$q%' LIMIT 1;";
-                        $sorgukontrol = $db->query($sorgu);
-                        while ($cikti = $sorgukontrol->fetch(PDO::FETCH_ASSOC)){
-                            echo '<div class="card-header text-center text-white">Loli Anime Wiki</div><div class="card-header">
+                }
+                ?>
+            </div>
+        <div class="card text-white mb-2" style="background-color: #3c3c3c;">
+            <?php
+            $card_an = $db->prepare("SELECT user_card_title, user_card_muted, user_card_text, user_card_image, user_card_link, user_card_name, user_card_username FROM tarayici_card_anime_users ");
+            $card_an->execute(array($q));
+            $kontrol_an = $card_an->fetch(PDO::FETCH_ASSOC);
+            if ($kontrol_an > 0) {
+                $sorgu = "SELECT * FROM tarayici_card_anime_users WHERE user_card_title LIKE '%$q%' LIMIT 1;";
+                $sorgukontrol = $db->query($sorgu);
+                while ($cikti = $sorgukontrol->fetch(PDO::FETCH_ASSOC)){
+                    echo '<div class="card-header text-center text-white">Loli Anime Wiki</div><div class="card-header">
                         <img src="' . $cikti['user_card_image'] . '" class="rounded-1 f-right mb-1 col-md img-fluid" style="max-width: 220px; max-height: 270px;"> 
                         <h1 class="fontlu">' . $cikti['user_card_title'] . '</h1>
                         <h5 class="text-muted fontlu">' . $cikti['user_card_muted'] . '</h5>
@@ -170,32 +170,39 @@ session_start();
                         </a>
                         
                     ';
-                            $link_anime = "SELECT * FROM tarayici_user_link";
-                            $link_kontrol = $db->query($link_anime);
-                            while($cikti2 = $link_kontrol->fetch(PDO::FETCH_ASSOC)){
-                                if($cikti2['user_link_anime'] == $cikti['user_card_title']){
-                                    echo '<a href="' . $cikti2['user_link_link'] . '"><div class="btn btn-outline-white" style="border-radius: 100px; margin-left: 3px;" data-ripple-color="dark">' . $cikti2['user_link_name'] . '</div></a>';
-                                }
-                            }echo '</div>';
+                    $link_anime = "SELECT * FROM tarayici_user_link";
+                    $link_kontrol = $db->query($link_anime);
+                    while($cikti2 = $link_kontrol->fetch(PDO::FETCH_ASSOC)){
+                        if($cikti2['user_link_anime'] == $cikti['user_card_title']){
+                            echo '<a href="' . $cikti2['user_link_link'] . '"><div class="btn btn-outline-white" style="border-radius: 100px; margin-left: 3px;" data-ripple-color="dark">' . $cikti2['user_link_name'] . '</div></a>';
                         }
-                    }
-                    ?>
-                </div>
-                <div class="col-md-12 text-center">
-                    <?php
-                    require 'php/anime_ekle.php';
-                    ?>
-                </div>
-                <div class="card col-md-7 f-left" style="background-color: #3c3c3c; margin-left: -3px; max-width: 760px;">
-                    <div class="gcse-searchresults-only" id="GoogleImage" runat="server"></div>
-                </div>
-                <div class="card text-white f-right col-md-5" style="background-color: #3c3c3c; margin-left: 0px;">
-                    <?php
-                    $card_anime = $db->prepare("SELECT tarayici_card_anime_users.user_card_title, tarayici_card_anime_users.user_card_muted, tarayici_card_anime_users.user_card_text, tarayici_card_anime_users.user_card_image, tarayici_card_anime_users.user_card_link, tarayici_card_anime_users.user_card_name, tarayici_card_anime_users.user_card_username tarayici_user_link.user_link_anime, tarayici_user_link.user_link_name, tarayici_user_link.user_link_link FROM tarayici_card_anime_users, tarayici_user_link WHERE tarayici_card_anime_users.user_card_title = tarayici_card_anime_users.user_card_name");
-                    $anime_sorgu = "SELECT * FROM tarayici_card_anime_users, tarayici_user_link ORDER BY RAND() LIMIT 1";
-                    $anime_sorgukontrol = $db->query($anime_sorgu);
-                    while ($cikti = $anime_sorgukontrol->fetch(PDO::FETCH_ASSOC)) {
-                        echo '<div class="card-header text-center text-white"><small>Random Animeler (Oluşturan Kullanıcı: ' . $cikti['user_card_username'] . ')</small></div>
+                    }echo '</div>';
+                }
+            }
+            ?>
+        </div>
+        <div class="col-md-12 text-center">
+            <?php
+            require 'php/anime_ekle.php';
+            if(isset($_POST['s'])){
+                echo '
+                <div class="alert alert-warning alert-dismissible fade show col-md-12" role="alert">
+                  <strong>Dikkat!</strong> Sayın kullanıcımız, Şikayet özelliği henüz kullanılmamaktadır. Anlayışınız için teşekkürler...
+                  <button type="button" class="btn-close" data-mdb-dismiss="alert" aria-label="Close"></button>
+                </div>';
+            }
+            ?>
+        </div>
+        <div class="card col-md-7 f-left" style="background-color: #3c3c3c; margin-left: -3px; max-width: 760px;">
+            <div class="gcse-searchresults-only" id="GoogleImage" runat="server"></div>
+        </div>
+        <div class="card text-white f-right col-md-5" style="background-color: #3c3c3c; margin-left: 0px;">
+            <?php
+            $card_anime = $db->prepare("SELECT tarayici_card_anime_users.user_card_title, tarayici_card_anime_users.user_card_muted, tarayici_card_anime_users.user_card_text, tarayici_card_anime_users.user_card_image, tarayici_card_anime_users.user_card_link, tarayici_card_anime_users.user_card_name, tarayici_card_anime_users.user_card_username tarayici_user_link.user_link_anime, tarayici_user_link.user_link_name, tarayici_user_link.user_link_link FROM tarayici_card_anime_users, tarayici_user_link WHERE tarayici_card_anime_users.user_card_title = tarayici_card_anime_users.user_card_name");
+            $anime_sorgu = "SELECT * FROM tarayici_card_anime_users, tarayici_user_link ORDER BY RAND() LIMIT 1";
+            $anime_sorgukontrol = $db->query($anime_sorgu);
+            while ($cikti = $anime_sorgukontrol->fetch(PDO::FETCH_ASSOC)) {
+                echo '<div class="card-header text-center text-white"><small>Random Animeler (Oluşturan Kullanıcı: ' . $cikti['user_card_username'] . ')</small></div>
                                 <div class="card-header">
                                <img src="' . $cikti['user_card_image'] . '" class="rounded-1 f-right " style="max-width: 150px;"> 
                                <h1 class="fontlu">' . $cikti['user_card_title'] . '</h1>
@@ -203,32 +210,95 @@ session_start();
                                <br>
                                <p>' . $cikti['user_card_text'] . '...</p>
                                <a href="' . $cikti['user_card_link'] . '"><div class="btn btn-outline-white" style="border-radius: 100px;" data-ripple-color="dark">' . $cikti['user_card_name'] . '</div></a>';
-                        $link_anime = "SELECT * FROM tarayici_user_link";
-                        $link_kontrol = $db->query($link_anime);
-                        while($cikti2 = $link_kontrol->fetch(PDO::FETCH_ASSOC)){
-                            if($cikti2['user_link_anime'] == $cikti['user_card_title']){
-                                echo '<a href="' . $cikti2['user_link_link'] . '"><div class="btn btn-outline-white" style="border-radius: 100px; margin-left: 3px;" data-ripple-color="dark">' . $cikti2['user_link_name'] . '</div></a>';
-                            }
-                        }
+                $link_anime = "SELECT * FROM tarayici_user_link";
+                $link_kontrol = $db->query($link_anime);
+                while($cikti2 = $link_kontrol->fetch(PDO::FETCH_ASSOC)){
+                    if($cikti2['user_link_anime'] == $cikti['user_card_title']){
+                        echo '<a href="' . $cikti2['user_link_link'] . '"><div class="btn btn-outline-white" style="border-radius: 100px; margin-left: 3px;" data-ripple-color="dark">' . $cikti2['user_link_name'] . '</div></a>';
                     }
+                }
+            }
 
-                    ?>
-                </div>
-                <div class="btn-sm btn-outline-info text-center align-self-center" type="button" data-mdb-toggle="modal" data-mdb-target="#animeEkleModal" style="border-radius: 100px; max-width: 300px;" data-ripple-color="dark">Sizde sitenizden link koymak istermisiniz?</div>
+            ?>
+        </div>
+        <div class="row justify-content-center">
+            <div class="btn-sm btn-outline-info mb-1 mt-1 text-center align-self-center mx-1" type="button" data-mdb-toggle="modal" data-mdb-target="#animeEkleModal" style="max-width: 260px;" data-ripple-color="dark">Sizde sitenizden link koymak istermisiniz?</div>
+            <div class="btn-sm btn-outline-danger mb-1 mt-1 f-right text-center align-self-center mx-1" type="button" data-mdb-target="#animeSikayetModal" data-mdb-toggle="modal" style="max-width: 200px;" data-ripple-color="dark">Şikayetiniz mi var?</div>
+        </div>
+        </div>
+    <div class="card text-white f-right col-md-5" style="background-color: #3c3c3c;">
+        <div class="card-header text-center text-white"><small>Sponsor</small></div>
+        <div class="card-header mt-4 mb-5 text-center">
+            SPONSORLUK İÇİN İLETİŞİME GEÇİNİZ! İLETİŞİM ADRESSLLERİ YAZILI
+        </div>
+    </div>
+    <div class="card text-white f-right col-md-5" style="background-color: #3c3c3c;">
+        <div class="card-header text-center text-white"><small>Github & Discord</small></div>
+        <div class="text-center">
+            <div class="embed-responsive embed-responsive-16by9">
+                <iframe src="https://discord.com/widget?id=865254296098308096&theme=dark" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
             </div>
-            <div class="card text-white f-right col-md-5" style="background-color: #3c3c3c;">
-                <div class="card-header text-center text-white"><small>Sponsor</small></div>
-                <div class="card-header mt-5 text-center">
-                    SPONSOR REKLAM SECTİON
+            <div class="btn btn-outline-info" data-ripple-color="dark"> Loli Search Github: <a href="https://github.com/YasinSenpai/Loli-Search">https://github.com/YasinSenpai/Loli-Search</a></div>
+        </div>
+    </div>
+    </div>
+
+    <div
+            class="modal fade"
+            id="animeSikayetModal"
+            data-mdb-backdrop="static"
+            data-mdb-keyboard="false"
+            tabindex="-1"
+            aria-labelledby="staticBackdropLabel"
+            aria-hidden="true"
+    >
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Şikayet!</h5>
+                    <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
                 </div>
+                <form method="post">
+                    <div class="card-body">
+                        <?php
+                        if(isset($_SESSION['isim'])){
+                            echo '<div class="form-outline mb-3">
+                                    <input name="s_email" type="email" id="form12" class="form-control" disabled />
+                                    <label class="form-label" for="form12">'.$_SESSION['isim'].'</label>
+                                </div>';
+                        }else{
+                            echo '<div class="form-outline mb-3">
+                                    <input name="s_email" type="email" id="form12" class="form-control" required />
+                                    <label class="form-label" for="form12">Email Addressiniz</label>
+                                </div>
+                                <div class="form-outline mb-3">
+                                    <input name="s_isim" type="text" id="form12" class="form-control" required />
+                                    <label class="form-label" for="form12">Adınız soyadınız</label>
+                                </div>';
+                        }
+                        ?>
+                        <div class="form-outline mb-3">
+                            <input name="s_konu" type="text" id="form12" class="form-control" required />
+                            <label class="form-label" for="form12">Şikayet Konusu</label>
+                        </div>
+                        <div class="form-outline mb-3">
+                            <input name="s_baslik" type="text" id="form12" class="form-control" required />
+                            <label class="form-label" for="form12">Şikayet Başlık</label>
+                        </div>
+                        <div class="form-outline">
+                            <textarea class="form-control" id="textAreaExample" rows="4" required></textarea>
+                            <label class="form-label" for="textAreaExample">Şikayet Mesajınız</label>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-outline-info" type="sumbit" data-ripple-color="dark" name="s">Gönder!</button>
+                        <button class="btn btn-outline-danger f-right" type="reset" data-ripple-color="dark">Reset!</button>
+                    </div>
+                </form>
             </div>
-            <div class="card text-white f-right col-md-5" style="background-color: #3c3c3c;">
-                <div class="card-header text-center text-white"><small>Github & Discord</small></div>
-                <div class="mt-5 text-center">
-                    <div class="embed-responsive">
-                        <iframe class="embed-responsive-item" src="https://discord.com/widget?id=865254296098308096&theme=dark" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>                    </div>
-                </div>
-            </div>
+        </div>
+    </div>
+
     <div
             class="modal fade"
             id="animeEkleModal"
@@ -291,7 +361,7 @@ session_start();
                                     </div>
                                     <div class="col">
                                       <div class="form-outline">
-                                        <input type="text" id="form3Example2" name="a_site" class="form-control" />
+                                        <input type="text" id="form3Example2" name="a_site" class="form-control" required />
                                         <label class="form-label" for="form3Example2">Animenin yüklendiği site</label>
                                       </div>
                                     </div>
@@ -312,7 +382,7 @@ session_start();
                                   </div>
                                   
                                   <div class="form-outline mb-4">
-                                    <input type="text" id="form3Example4" name="a_link" class="form-control"required />
+                                    <input type="url" id="form3Example4" name="a_link" class="form-control"required />
                                     <label class="form-label" for="form3Example4">Anime linki</label>
                                   </div>
                                    <button type="submit" name="a" class="btn btn-outline-info f-left align-self-center" style="margin-right: 5px;">Ekle!</button>
@@ -333,7 +403,7 @@ session_start();
                     while ($cikti = $anime_sorgukontrol2->fetch(PDO::FETCH_ASSOC)) {
                         echo '<option value="'.$cikti['user_card_title'].'">'.$cikti['user_card_title'].'</option>';
                     }
-                            echo '</datalist>
+                    echo '</datalist>
                                                       <div class="form-outline mb-4">
                                                         <input type="text" name="l_site" id="form5Example1" class="form-control" required/>
                                                         <label class="form-label" for="form5Example1">Sitenizin Adı</label>
@@ -352,63 +422,29 @@ session_start();
                     echo '<div class="card-body"><div class="alert alert-danger" role="alert">
                                   ANİME EKLEMENİZ İÇİN GİRİŞ YAPMANIZ GEREKMEKTEDİR! 
                                 </div><br>
-                            <div class="btn btn-outline-secondary align-items-center">Hemen giriş yap</div></div>';
+                            <div class="btn btn-outline-secondary align-self-center mb-2">Lütfen Ana Sayfadan Giriş Yapıp Tekrar Deneyiniz...</div>
+                            <div class="btn btn-outline-danger align-self-center" data-mdb-target="#animeSikayetModal" data-mdb-toggle="modal">Şikayetiniz mi var?</div></div>';
                 }
                 ?>
             </div>
         </div>
     </div>
-
-            <div
-                    class="tab-pane fade"
-                    id="pills-profile2"
-                    role="tabpanel"
-                    aria-labelledby="pills-profile-tab2"
-            >
-                <div class="gcse-searchresults-only" id="GoogleImage" ></div>
-            </div>
-            <div
-                    class="tab-pane fade"
-                    id="pills-contact2"
-                    role="tabpanel"
-                    aria-labelledby="pills-contact-tab2"
-            >
-                Bilgi kısmı
-            </div>
-            <div
-                    class="tab-pane fade"
-                    id="pills-contact3"
-                    role="tabpanel"
-                    aria-labelledby="pills-contact-tab2"
-            >
-                Film kısmı
-            </div>
-            <div
-                    class="tab-pane fade"
-                    id="pills-contact4"
-                    role="tabpanel"
-                    aria-labelledby="pills-contact-tab2"
-            >
-                Akademi kısmı
-            </div>
-        </div>
-    </div>
-    <div
-            class="modal fade"
-            id="animeEkleModal"
-            data-mdb-backdrop="static"
-            data-mdb-keyboard="false"
-            tabindex="-1"
-            aria-labelledby="staticBackdropLabel"
-            aria-hidden="true"
-    >
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="staticBackdropLabel">Anime ekle</h5>
-                    <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <?php
+        <div
+                class="modal fade"
+                id="animeEkleModal"
+                data-mdb-backdrop="static"
+                data-mdb-keyboard="false"
+                tabindex="-1"
+                aria-labelledby="staticBackdropLabel"
+                aria-hidden="true"
+        >
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">Anime ekle</h5>
+                        <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <?php
                     if(isset($_SESSION['isim'])){
                         echo '<div class="card-body">
 <ul class="nav nav-pills mb-3 justify-content-center" id="ex1" role="tablist">
@@ -495,7 +531,7 @@ session_start();
                         while ($cikti = $anime_sorgukontrol2->fetch(PDO::FETCH_ASSOC)) {
                             echo '<option value="'.$cikti['user_card_title'].'">'.$cikti['user_card_title'].'</option>';
                         }
-                echo '</select>
+                        echo '</select>
                           <div class="form-outline mb-4">
                             <input type="text" name="l_site" id="form5Example1" class="form-control" />
                             <label class="form-label" for="form5Example1">Sitenizin Adı</label>
@@ -518,18 +554,53 @@ session_start();
                                   ANİME EKLEMENİZ İÇİN GİRİŞ YAPMANIZ GEREKMEKTEDİR!
                                 </div></div>';
                     }
-                ?>
+                    ?>
+                </div>
             </div>
         </div>
+
+    <div
+            class="tab-pane fade"
+            id="pills-profile2"
+            role="tabpanel"
+            aria-labelledby="pills-profile-tab2"
+    >
+        <div class="gcse-searchresults-only" id="GoogleImage" ></div>
+    </div>
+    <div
+            class="tab-pane fade"
+            id="pills-contact2"
+            role="tabpanel"
+            aria-labelledby="pills-contact-tab2"
+    >
+        Bilgi kısmı
+    </div>
+    <div
+            class="tab-pane fade"
+            id="pills-contact3"
+            role="tabpanel"
+            aria-labelledby="pills-contact-tab2"
+    >
+        Film kısmı
+    </div>
+    <div
+            class="tab-pane fade"
+            id="pills-contact4"
+            role="tabpanel"
+            aria-labelledby="pills-contact-tab2"
+    >
+        Akademi kısmı
     </div>
 </div>
+</div>
+</div>
 
-    <script async src="https://cse.google.com/cse.js?cx=89ecf14465e74f30b"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-    <script src="js/main.js"></script>
-    <script src="js/mdb.min.js"></script>
+<script async src="https://cse.google.com/cse.js?cx=89ecf14465e74f30b"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<script src="js/main.js"></script>
+<script src="js/mdb.min.js"></script>
 </body>
 
