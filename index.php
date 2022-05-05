@@ -21,7 +21,7 @@ session_start();
     </style>
 </head>
 <body style="background: #3c3c3c">
-    <!--M. Yasin Özkaya tarafından tasarlanıp kodlanmıştır Artado Search referans alınmıştır-->
+    <!--M. Yasin Özkaya tarafından tasarlanıp kodlanmıştır Artado Search referans alınmıştır (Artado Dev'e teşekkürler <3)-->
     <!--MDBoostrap kütüphanesi ile kodlanmıştır-->
     <!--Boostrap icon kullanılmıştır-->
     <div style="margin-top: 10px"></div>
