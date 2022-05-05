@@ -121,6 +121,11 @@ session_start();
                 role="tabpanel"
                 aria-labelledby="pills-home-tab2"
         >
+            <?php
+            if(trim($q == "sex") OR trim($q == "porn") OR trim($q == "Porno") OR trim($q == "+18") OR trim($q == "ifşa")){
+                echo '<div class="alert alert-danger">Sayın kullanıcımız +18 sitelere girmek <a href="https://barandogan.av.tr/turk-ceza-kanunu.html#Madde-134">Türk Ceza Kanunun 134-135-136</a> Maddelerini ihlal ediyor olabilir LoliSearch ilerlemeniz durumunda (+18 siteler veya kendine zarar verme başlıklı siteler) hiçbir şekilde zorumluluk kabul etmemektedir.</div>';
+            }
+            ?>
             <div class="card text-white mb-2" style="background-color: #3c3c3c;">
                 <?php
                 $card_wiki = $db->prepare("SELECT card_baslik, card_muted, card_text, card_image FROM tarayici_card_wiki ");
@@ -194,7 +199,7 @@ session_start();
             ?>
         </div>
         <div class="card col-md-7 f-left" style="background-color: #3c3c3c; margin-left: -3px; max-width: 760px;">
-            <div class="gcse-searchresults-only" id="GoogleImage" runat="server"></div>
+            <div class="gcse-searchresults-only" runat="server"></div>
             <script async src="https://cse.google.com/cse.js?cx=89ecf14465e74f30b"></script>
         </div>
         <div class="card text-white f-right col-md-5" style="background-color: #3c3c3c; margin-left: 0px;">
@@ -566,8 +571,8 @@ session_start();
             role="tabpanel"
             aria-labelledby="pills-profile-tab2"
     >
-        <script async src="https://cse.google.com/cse.js?cx=dd22c89c3839dc275"></script>
-        <div class="gcse-searchresults-only" id="image"></div>
+        <script async src="https://cse.google.com/cse.js?cx=89ecf14465e74f30b"></script>
+        <div class="gcse-searchresults-only" id="GoogleImage"></div>
     </div>
     <div
             class="tab-pane fade"
