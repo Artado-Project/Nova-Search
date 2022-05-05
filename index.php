@@ -83,13 +83,13 @@ session_start();
                 </div>
                 <div class="dropdown">
                     <hr class="ince">
-                    <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownDeveloper" data-bs-toggle="dropdown" aria-expanded="false">
                         <img src="images/developer.jpg" alt="" width="32" height="32" class="rounded-circle me-2">
                         <h5 class="text-black mb-3" style="margin-top: 5px">Developer: Aikaiz3L</h5>
                     </a>
                     <small class="text-black">İletişim adrressleri için tıklayın</small>
-                    <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1" style="">
-                        <li><a class="dropdown-item" href="#">Discord: Aikaiz3L#3200</a></li>
+                    <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownDeveloper" style="">
+                        <li><a class="dropdown-item" href="#">Discord: YasininFightClub#3200</a></li>
                         <li><a class="dropdown-item" href="#">İnstagram: yasin.dev__</a></li>
                     </ul>
                 </div>
