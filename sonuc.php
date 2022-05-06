@@ -233,9 +233,9 @@ session_start();
         </div>
         </div>
     <div class="card text-white f-right col-md-5" style="background-color: #3c3c3c;">
-        <div class="card-header text-center text-white"><small>Sponsor</small></div>
+        <div class="card-header text-center text-white"><small>Haber - Duyuru</small></div>
         <div class="card-header mt-4 mb-5 text-center">
-            SPONSORLUK İÇİN İLETİŞİME GEÇİNİZ! İLETİŞİM ADRESSLLERİ YAZILI
+            HABER BİLGİ AKIŞI BURADA GÖRÜNÜCEK
         </div>
     </div>
     <div class="card text-white f-right col-md-5" style="background-color: #3c3c3c;">

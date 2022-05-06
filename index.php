@@ -59,7 +59,7 @@ session_start();
             </div>
             <div class="offcanvas-body">
                <br>
-                <select class="form-select mb-3" aria-label="Default temalar">
+                <select class="form-select mb-3" aria-label="Default temalar" disabled>
                     <option selected disabled>Temalar</option>
                     <option value="1">Aydınlık</option>
                     <option value="2">Karanlık</option>
@@ -73,6 +73,7 @@ session_start();
                 </select>
                 <br>
                 <a class="btn btn-outline-info mb-3" data-ripple-color="dark" href="#">Ayarlar</a><br>
+                <a class="btn btn-outline-dark mb-3" data-ripple-color="dark" href="https://github.com/YasinSenpai/Loli-Search/">Github</a><br>
                 <a class="btn btn-outline-secondary mb-3" data-ripple-color="dark" href="#">Hakkımızda</a>
                 <a class="btn btn-outline-primary mb-3" data-ripple-color="dark" href="#">Manifesto'muz</a>
                 <a class="btn btn-outline-success mb-3" data-ripple-color="dark" href="#">Güncelleme notları</a><br>
