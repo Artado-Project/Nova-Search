@@ -36,6 +36,7 @@ if(isset($_POST['wikipedia'])) {
     $wiki_image = $_POST['w_image'];
     $kaynak = 'Wikipedia';
     $link = $wikipedia_veri;
+    $added_by_bot = 'Loli Wiki Bot';
 
     try {
         $kontrol = $db->prepare("SELECT * FROM tarayici_card_wiki WHERE card_link='$wikipedia_veri'");
@@ -43,9 +44,9 @@ if(isset($_POST['wikipedia'])) {
         if ($kontrol->rowCount() > 0) {
             echo '<div class="alert alert-danger">Veri zaten eklenmiş!!!!!</div>';
         } else {
-            $veri_ekle = $db->prepare(" INSERT INTO tarayici_card_wiki (card_baslik, card_muted, card_text, card_image, card_kaynak, card_link) VALUES (?,?,?,?,?,?)");
+            $veri_ekle = $db->prepare(" INSERT INTO tarayici_card_wiki (card_baslik, card_muted, card_text, card_image, card_kaynak, card_link, card_user) VALUES (?,?,?,?,?,?,?)");
             $veri_ekle->execute([
-                $baslik, $muted, $detay, $wiki_image, $kaynak, $link
+                $baslik, $muted, $detay, $wiki_image, $kaynak, $link, $added_by_bot
             ]);
 
             if (!isset($veri_ekle)) {
@@ -58,19 +59,9 @@ if(isset($_POST['wikipedia'])) {
     } catch (Exception $e) {
         echo $e->getMessage();
     }
-}
+}if(isset($_POST['sozluk'])){
+    // bu bot değildir. bot haline çevrilecektir
 
-/*
-  }if(isset($_POST['sozluk'])){
-
-    $anime = $_POST['s_link'];
-    $anime_veri = file_get_contents($anime);
-
-    $anime_adi = wiki_veri_al('<dd class="ordered-list">','</dd>', $anime_veri);
-
-    echo $anime_adi[0];
-
-    (GELİŞTİRİLİYOR)
 
 }
- */
+
