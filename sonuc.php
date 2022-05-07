@@ -136,7 +136,7 @@ session_start();
                     $sorgu = "SELECT * FROM tarayici_card_wiki WHERE card_baslik LIKE '%$q%' LIMIT 1;";
                     $sorgukontrol = $db->query($sorgu);
                     while ($cikti = $sorgukontrol->fetch(PDO::FETCH_ASSOC)){
-                        echo '<div class="card-header text-center text-white">Loli Wiki</div><div class="card-header">
+                            echo '<span class="card-header text-center badge badge-success" style="font-size: smaller">Loli Wiki</span><div class="card-header">
                         <img src="'.$cikti['card_image'].'" class="rounded-1 f-right" style="max-width: 200px; max-height: 250px;"> 
                         <h1 class="fontlu">'. $cikti['card_baslik'] .'</h1>
                         <h5 class="text-muted fontlu">'. $cikti['card_muted'] .'</h5>
@@ -167,7 +167,7 @@ session_start();
                 $sorgu = "SELECT * FROM tarayici_card_anime_users WHERE user_card_title LIKE '%$q%' LIMIT 1;";
                 $sorgukontrol = $db->query($sorgu);
                 while ($cikti = $sorgukontrol->fetch(PDO::FETCH_ASSOC)){
-                    echo '<div class="card-header text-center text-white">Loli Anime Wiki</div><div class="card-header">
+                    echo '<span class="badge badge-primary card-header text-center"style="font-size: smaller">Loli Anime Wiki</span><div class="card-header">
                         <img src="' . $cikti['user_card_image'] . '" class="rounded-1 f-right mb-1 col-md img-fluid" style="max-width: 220px; max-height: 270px;"> 
                         <h1 class="fontlu">' . $cikti['user_card_title'] . '</h1>
                         <h5 class="text-muted fontlu">' . $cikti['user_card_muted'] . '</h5>
@@ -198,7 +198,7 @@ session_start();
                 $sozluk_sorgu = "SELECT * FROM tarayici_card_sozluk WHERE sozluk_kelime LIKE '%$q%' LIMIT 1";
                 $sozluk_kontrol = $db->query($sozluk_sorgu);
                 while($cikti = $sozluk_kontrol->fetch(PDO::FETCH_ASSOC)){
-                    echo '<span class="badge badge-info">Loli Sözlük</span><div class="card-header text-center fontlu"><h3>'.$cikti['sozluk_kelime'].'</h3></div>
+                    echo '<span class="badge card-header badge-info"style="font-size: smaller">Loli Sözlük</span><div class="card-header text-center fontlu"><h3>'.$cikti['sozluk_kelime'].'</h3></div>
                           <div class="card-body fontlu">'.$cikti['sozluk_aciklama'].'</div>';
 
                 }
@@ -230,7 +230,7 @@ session_start();
             $anime_sorgu = "SELECT * FROM tarayici_card_anime_users, tarayici_user_link ORDER BY RAND() LIMIT 1";
             $anime_sorgukontrol = $db->query($anime_sorgu);
             while ($cikti = $anime_sorgukontrol->fetch(PDO::FETCH_ASSOC)) {
-                echo '<div class="card-header text-center text-white"><small>Random Animeler (Oluşturan Kullanıcı: ' . $cikti['user_card_username'] . ')</small></div>
+                echo '<span class="badge badge-warning card-header text-center"style="font-size: smaller">Random Animeler (Oluşturan Kullanıcı: ' . $cikti['user_card_username'] . ')</span>
                                 <div class="card-header">
                                <img src="' . $cikti['user_card_image'] . '" class="rounded-1 f-right " style="max-width: 150px;"> 
                                <h1 class="fontlu">' . $cikti['user_card_title'] . '</h1>

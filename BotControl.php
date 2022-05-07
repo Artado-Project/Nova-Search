@@ -23,26 +23,37 @@
 <div class="container">
     <div class="mb-5"></div>
     <div class="row">
-        <form method="post">
             <div class="card text-white col-md-5 mx-1" style="background: #3c3c3c">
                 <div class="card-header fontlu text-center"><h5>Wikipedia</h5></div>
-                <div class="card-body">
-                    <div class="alert alert-warning">Lütfen Mobile sitesinden linki yapıştırınız örn: <code>https://tr.<b>m</b>.wikipedia.org/wiki/Vitoria_Muharebesi</code></div>
-                    <input type="url" class="form-control mb-3" name="w_link" placeholder="Wikipedia Mobile Linki yapıştırın" required>
-                    <input type="url" class="form-control" name="w_image" placeholder="Konuyla alakalı Resim" >
-                </div>
-                <div class="card-footer">
-                    <button class="btn btn-outline-success" type="submit" name="wikipedia">Gönder!</button>
-                    <button class="btn btn-outline-danger f-right" type="reset">Reset!</button>
-                </div>
+                <form method="post">
+                    <div class="card-body">
+                        <div class="alert alert-warning">Lütfen Mobile sitesinden linki yapıştırınız örn: <code>https://tr.<b>m</b>.wikipedia.org/wiki/Vitoria_Muharebesi</code></div>
+                        <input type="url" class="form-control mb-3" name="w_link" placeholder="Wikipedia Mobile Linki yapıştırın" required>
+                        <input type="url" class="form-control" name="w_image" placeholder="Konuyla alakalı Resim" >
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-outline-success" type="submit" name="wikipedia">Gönder!</button>
+                        <button class="btn btn-outline-danger f-right" type="reset">Reset!</button>
+                    </div>
+                </form>
             </div>
             <div class="card text-white col-md-5" style="background: #3c3c3c">
                 <div class="card-header fontlu text-center"><h5>Sözlük</h5></div>
+                <form method="post">
+                    <div class="card-body">
+                        <div class="alert alert-warning">SesliSözlük'den Linki yapıştırınız örn: <code>https://www.seslisozluk.net/deneme-nedir-ne-demek/</code></div>
+                        <input type="url" class="form-control" name="s_link" placeholder="TürkAnimeden link yapıştırınız">
+                    </div>
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-outline-success" name="sozluk">Gönder!</button>
+                        <button type="reset" class="btn btn-outline-danger f-right">Reset!</button>
+                    </div>
+                </form>
+
             </div>
-        </form>
     </div>
     <?php
-    require 'LoliBots/Loli_Wiki_Bot.php';
+    require 'LoliBots/Loli_Wiki_Bots.php';
     ?>
 </div>
 
