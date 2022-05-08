@@ -35,7 +35,13 @@ session_start();
     </style>
 
 </head>
-<body style="background-color: #333333">
+<?php
+@$isim = $_SESSION['isim'];
+$bgsorgu = $db->prepare("SELECT * FROM tarayici_kayit WHERE uye_kadi = '$isim'");
+$bgsorgu->execute(array());
+$c = $bgsorgu->fetch(PDO::FETCH_ASSOC);
+?>
+<body style="background-repeat: no-repeat; background-attachment: fixed; <?php if($c['uye_bg'] != ""){echo 'background: url('.$c['uye_bg'].')';}else{'background-color: #3c3c3c';}?>">
 <div class="container">
     <div class="row d-flex justify-content-center align-items-center" style="margin-top: -40px">
         <img src="images/loli.png" class="img-fluid mb-3" style="max-width: 250px; max-height: 250px;"><br>
@@ -132,10 +138,9 @@ session_start();
                 role="tabpanel"
                 aria-labelledby="pills-home-tab2"
         >
+
             <?php
-            if(trim($q == "sex") OR trim($q == "porn") OR trim($q == "Porno") OR trim($q == "+18") OR trim($q == "ifşa")){
-                echo '<div class="alert alert-danger">Sayın kullanıcımız +18 sitelere girmek <a href="https://barandogan.av.tr/turk-ceza-kanunu.html#Madde-134">Türk Ceza Kanunun 134-135-136</a> Maddelerini ihlal ediyor olabilir LoliSearch ilerlemeniz durumunda (+18 siteler veya kendine zarar verme başlıklı siteler) hiçbir şekilde zorumluluk kabul etmemektedir.</div>';
-            }
+            require 'LoliBots/+18_onlem.php';
             ?>
             <!--Loli Wiki-->
             <div class="card text-white mb-2" style="background-color: #3c3c3c;">
@@ -147,10 +152,8 @@ session_start();
                     $sorgu = "SELECT * FROM tarayici_card_wiki WHERE card_baslik LIKE '%$q%' LIMIT 1;";
                     $sorgukontrol = $db->query($sorgu);
                     while ($cikti = $sorgukontrol->fetch(PDO::FETCH_ASSOC)){
-                            echo '<span class="card-header text-center badge badge-success" style="font-size: smaller">Loli Wiki';if($cikti['card_user'] == 'Loli Wiki Bot'){
-                            echo '<div class="badge badge-info f-right">Bu Veri <b>Loli Wiki Bot</b> tarafından eklenmiştir hata ile karşılaşırsanız lütfen bildiriniz!</div>';
-                        }echo '</span><div class="card-header">
-                        <img src="'.$cikti['card_image'].'" class="rounded-1 f-right" style="max-width: 200px; max-height: 250px;"> 
+                            echo '<span class="card-header text-center badge badge-success" style="font-size: smaller">Loli Wiki</span><div class="card-header">
+                        <img src="'.$cikti['card_image'].'" class="rounded-1 f-right" style="max-width: 200px; max-height: 220px;"> 
                         <h1 class="fontlu">'. $cikti['card_baslik'] .'</h1>
                         <h5 class="text-muted fontlu">'. $cikti['card_muted'] .'</h5>
                         <br>
@@ -162,6 +165,7 @@ session_start();
                         }
                         echo '</div>';
                     }
+
                 }else{
                     echo '<div class="card-header">
                         <h1 class="text-center">Opps! bir hata meydana geldi!</h1>
@@ -232,7 +236,7 @@ session_start();
         </div>
             <!--Web Sonuç-->
             <div class="card col-md-7 f-left" style="background-color: #3c3c3c; margin-left: -3px; max-width: 760px;">
-            <div class="gcse-searchresults-only" runat="server"></div>
+            <div class="gcse-searchresults-only" runat="server" ></div>
             <script async src="https://cse.google.com/cse.js?cx=89ecf14465e74f30b"></script>
         </div>
             <!--Loli Random Anime-->
@@ -607,8 +611,14 @@ session_start();
             aria-labelledby="pills-profile-tab2"
     >
         <!--Görsel Arama-->
-        <script async src="https://cse.google.com/cse.js?cx=89ecf14465e74f30b"></script>
-        <div class="gcse-searchresults-only" id="GoogleImage"></div>
+        <form method="get">
+            <script async src="https://cse.google.com/cse.js?cx=89ecf14465e74f30b"></script>
+            <div class="gcse-searchresults-only" id="GoogleImage"></div>
+        </form>
+        <?php
+
+        ?>
+        e
     </div>
     <div
             class="tab-pane fade"

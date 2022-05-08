@@ -86,5 +86,19 @@ if(isset($_POST['g'])){
     }
 
 }
+if(isset($_POST['bg'])){
+    $bg = $_POST['bg_link'];
+
+    $sorgu = $db->prepare("UPDATE tarayici_kayit SET uye_bg = ?");
+    $sorgu->execute(array($bg));
+
+    if($sorgu = true){
+        echo '<div class="alert alert-info">Arkaplanının başarıyla kaydedilmiştir. sayfa yenileniyor...</div>';
+        echo '<meta http-equiv="refresh" content="3;url=index.php">';
+    }else{
+        echo '<div class="alert alert-danger">Bir hata meydana geldi lütfen hatanızı bildiriniz!</div>';
+    }
+
+}
 
 

@@ -1,5 +1,6 @@
 <?php
 session_start();
+require 'php/baglan.php';
 ?>
 <!doctype html>
 <html lang="tr">
@@ -20,15 +21,22 @@ session_start();
         }
     </style>
 </head>
-<body style="background: #3c3c3c">
-    <!--M. Yasin Özkaya tarafından tasarlanıp kodlanmıştır Artado Search referans alınmıştır (Artado Dev'e teşekkürler <3)-->
+<?php
+@$isim = $_SESSION['isim'];
+$bgsorgu = $db->prepare("SELECT * FROM tarayici_kayit WHERE uye_kadi = '$isim'");
+$bgsorgu->execute(array());
+$c = $bgsorgu->fetch(PDO::FETCH_ASSOC);
+?>
+<!--Background degistirme-->
+<body style="background-repeat: no-repeat; background-attachment: fixed; <?php if(isset($c['uye_bg'])){echo 'background: url('.$c['uye_bg'].')';}elseif(!isset($c['uye_bg'])){echo 'background-color: #3c3c3c';}?>">
+    <!--Loli Search, Artado Project bünyesinde M. Yasin Özkaya tarafından tasarlanıp kodlanmıştır-->
     <!--MDBoostrap kütüphanesi ile kodlanmıştır-->
     <!--Boostrap icon kullanılmıştır-->
     <div style="margin-top: 10px"></div>
     <div class="container">
         <?php
             if(isset($_SESSION['isim'])){
-                echo '<div class="dropdown"><div class="btn btn-outline-primary" id="dropdownMenuButton" data-mdb-toggle="dropdown"><i class="bi-person"></i></div>
+                echo '<div class="dropdown"><div class="btn btn-outline-primary mx-1" id="dropdownMenuButton" data-mdb-toggle="dropdown"><i class="bi-person"></i></div><div class="btn btn-outline-light" data-ripple-color="dark" data-mdb-target="#backgroundModal" data-mdb-toggle="modal">Arka plan resmi değiştir</div>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <li><a class="dropdown-item bg-light" href="#">'.$_SESSION['isim'].'</a></li>
                         <li><hr class="dropdown-divider" /></li>
@@ -41,6 +49,7 @@ session_start();
                 echo '<div class="btn btn-outline-info" data-ripple-color="dark" data-bs-toggle="modal" data-bs-target="#modalKayit">Kayıt - Giriş</div>';
             }
         ?>
+
         <button class="btn btn-outline-success f-right mx-1 h-25" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" data-ripple-color="dark" aria-controls="offcanvasRight"><i class="bi-list"></i></button>
         <div class="btn btn-outline-warning f-right" data-ripple-color="dark">Bağış Yap</div>
         <?php
@@ -74,9 +83,9 @@ session_start();
                 <br>
                 <a class="btn btn-outline-info mb-3" data-ripple-color="dark" href="#">Ayarlar</a><br>
                 <a class="btn btn-outline-dark mb-3" data-ripple-color="dark" href="https://github.com/YasinSenpai/Loli-Search/">Github</a><br>
-                <a class="btn btn-outline-secondary mb-3" data-ripple-color="dark" href="#">Hakkımızda</a>
-                <a class="btn btn-outline-primary mb-3" data-ripple-color="dark" href="#">Manifesto'muz</a>
-                <a class="btn btn-outline-success mb-3" data-ripple-color="dark" href="#">Güncelleme notları</a><br>
+                <a class="btn btn-outline-secondary mb-3" data-ripple-color="dark" href="Loli-Search.php">Hakkımızda</a><br>
+                <a class="btn btn-outline-primary mb-3" data-ripple-color="dark" href="Loli-Search.php">Manifesto'muz</a>
+                <a class="btn btn-outline-success mb-3" data-ripple-color="dark" href="Loli-Search.php">Güncelleme notları</a><br>
                 <hr class="ince">
                 <div class="col-md-12">
                     <h3 class="text-center fontlu">Loli Search</h3>
@@ -150,6 +159,35 @@ session_start();
         }
         ?>
     </div>
+
+        <!--Arka plan modal-->
+        <div
+                class="modal fade"
+                id="backgroundModal"
+                data-mdb-backdrop="static"
+                data-mdb-keyboard="false"
+                tabindex="-1"
+                aria-labelledby="staticBackdropLabel"
+                aria-hidden="true"
+        >
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">Arka plan değiştir</h5>
+                        <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form method="post">
+                        <div class="modal-body">
+                            <input class="form-control" name="bg_link" type="url" required placeholder="Lütfen bir resim linki giriniz.">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary" name="bg">Değiştir!</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!--Son-->
 
         <!--Kayit - Giriş modal-->
         <div class="modal fade" id="modalKayit" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
