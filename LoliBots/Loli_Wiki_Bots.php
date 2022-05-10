@@ -1,7 +1,6 @@
 <?php
 require 'php/baglan.php';
 
-// Developed by YasinLDev
 
 function wiki_veri_al($baslik, $son, $detay){
     @preg_match_all('/' . preg_quote($baslik, '/') .
@@ -60,8 +59,30 @@ if(isset($_POST['wikipedia'])) {
         echo $e->getMessage();
     }
 }if(isset($_POST['sozluk'])){
-    // bu bot değildir. bot haline çevrilecektir
+    
+    $b = $_POST['s_b'];
+    $a = $_POST['s_a'];
+    $onay = "false";
 
+    $kontrol = $db->prepare("SELECT * FROM tarayici_sozluk WHERE sozluk_baslik = '$b'");
+    $kontrol->execute(array());
+    if($kontrol->rowCount() > 0){
+        echo '<div class="alert alert-warning">Sayın admin zaten daha öncesinde böyle bir link eklenmiş</div>';
+    }else{
+        try{
+            $veri_ekle = $db->prepare("INSERT INTO tarayici_sozluk (sozluk_baslik, sozluk_aciklama, sozluk_onay) VALUES (?,?,?) ");
+            $veri_ekle->execute([
+                $b, $a, $onay
+            ]);
+
+            if($veri_ekle){
+                echo '<div class="alert alert-info">Sözlük ekleme işlemi başarılı</div>';
+            }
+
+        }catch(Exception $e){
+            echo $e->getMessage();
+        }
+    }
 
 }
 

@@ -41,7 +41,7 @@ $bgsorgu = $db->prepare("SELECT * FROM tarayici_kayit WHERE uye_kadi = '$isim'")
 $bgsorgu->execute(array());
 $c = $bgsorgu->fetch(PDO::FETCH_ASSOC);
 ?>
-<body style="background-repeat: no-repeat; background-attachment: fixed; <?php if($c['uye_bg'] != ""){echo 'background: url('.$c['uye_bg'].')';}else{'background-color: #3c3c3c';}?>">
+<body style="background-repeat: no-repeat; background-attachment: fixed; <?php if($c['uye_bg'] != ""){echo 'background: url('.$c['uye_bg'].')';}elseif(!isset($c['uye_bg'])){echo 'background-color: #3c3c3c';}?>">
 <div class="container">
     <div class="row d-flex justify-content-center align-items-center" style="margin-top: -40px">
         <img src="images/loli.png" class="img-fluid mb-3" style="max-width: 250px; max-height: 250px;"><br>
@@ -207,16 +207,18 @@ $c = $bgsorgu->fetch(PDO::FETCH_ASSOC);
             <!--Loli Sözlük-->
         <div class="card text-white mb-2 col-md-12"  style="background: #3c3c3c">
             <?php
-            $card_sozluk = $db->prepare("SELECT * FROM tarayici_card_sozluk");
+            $card_sozluk = $db->prepare("SELECT * FROM tarayici_sozluk");
             $card_sozluk->execute(array($q));
             $card_sozluk_ck = $card_sozluk->fetch(PDO::FETCH_ASSOC);
             if($card_sozluk_ck > 0){
-                $sozluk_sorgu = "SELECT * FROM tarayici_card_sozluk WHERE sozluk_kelime LIKE '%$q%' LIMIT 1";
-                $sozluk_kontrol = $db->query($sozluk_sorgu);
-                while($cikti = $sozluk_kontrol->fetch(PDO::FETCH_ASSOC)){
-                    echo '<span class="badge card-header badge-info"style="font-size: smaller">Loli Sözlük</span><div class="card-header text-center fontlu"><h3>'.$cikti['sozluk_kelime'].'</h3></div>
-                          <div class="card-body fontlu">'.$cikti['sozluk_aciklama'].'</div>';
+                if($card_sozluk_ck['sozluk_onay'] == "true"){
+                    $sozluk_sorgu = "SELECT * FROM tarayici_sozluk WHERE sozluk_baslik LIKE '%$q%' LIMIT 1";
+                    $sozluk_kontrol = $db->query($sozluk_sorgu);
+                    while($cikti = $sozluk_kontrol->fetch(PDO::FETCH_ASSOC)){
+                        echo '<span class="badge card-header badge-info"style="font-size: smaller">Loli Sözlük</span><div class="card-header text-center fontlu"><h3>'.$cikti['sozluk_baslik'].'</h3></div>
+                            <div class="card-body fontlu">'.$cikti['sozluk_aciklama'].'</div>';
 
+                    }
                 }
             }
             ?>

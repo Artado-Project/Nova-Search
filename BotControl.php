@@ -41,8 +41,9 @@
                 <div class="card-header fontlu text-center"><h5>Sözlük</h5></div>
                 <form method="post">
                     <div class="card-body">
-                        <div class="alert alert-warning">SesliSözlük'den Linki yapıştırınız örn: <code>https://www.seslisozluk.net/deneme-nedir-ne-demek/</code></div>
-                        <input type="url" class="form-control" name="s_link" placeholder="TürkAnimeden link yapıştırınız">
+                        <div class="alert alert-warning">Yanlızca aranan kelimeyi ve açıklamasını giriniz</div>
+                        <input class="form-control mb-3" placeholder="Başlık" name="s_b" required>
+                        <input class="form-control" placeholder="Açıklama" name="s_a" required>
                     </div>
                     <div class="card-footer">
                         <button type="submit" class="btn btn-outline-success" name="sozluk">Gönder!</button>
