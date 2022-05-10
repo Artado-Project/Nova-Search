@@ -28,7 +28,7 @@ $bgsorgu->execute(array());
 $c = $bgsorgu->fetch(PDO::FETCH_ASSOC);
 ?>
 <!--Background degistirme-->
-<body style="background-repeat: no-repeat; background-attachment: fixed; <?php if(isset($c['uye_bg'])){echo 'background: url('.$c['uye_bg'].')';}elseif(!isset($c['uye_bg'])){echo 'background-color: #3c3c3c';}?>">
+<body style="background-repeat: no-repeat; background-attachment: fixed; <?php if(isset($c['uye_bg'])){echo 'background: url('.$c['uye_bg'].')';}elseif(!isset($c['uye_bg'])){echo 'background-color: #3c3c3c';}elseif(!isset($_SESSION['isim'])){echo 'background-color: #3c3c3c';} ?>">
     <!--Loli Search, Artado Project bünyesinde M. Yasin Özkaya tarafından tasarlanıp kodlanmıştır-->
     <!--MDBoostrap kütüphanesi ile kodlanmıştır-->
     <!--Boostrap icon kullanılmıştır-->

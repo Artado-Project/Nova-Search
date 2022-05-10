@@ -41,7 +41,7 @@ $bgsorgu = $db->prepare("SELECT * FROM tarayici_kayit WHERE uye_kadi = '$isim'")
 $bgsorgu->execute(array());
 $c = $bgsorgu->fetch(PDO::FETCH_ASSOC);
 ?>
-<body style="background-repeat: no-repeat; background-attachment: fixed; <?php if($c['uye_bg'] != ""){echo 'background: url('.$c['uye_bg'].')';}elseif(!isset($c['uye_bg'])){echo 'background-color: #3c3c3c';}?>">
+<body style="background-repeat: no-repeat; background-attachment: fixed; <?php if($c['uye_bg'] != ""){echo 'background: url('.$c['uye_bg'].')';}elseif(!isset($c['uye_bg'])){echo 'background-color: #3c3c3c';}elseif(!isset($_SESSION['isim'])){echo 'background-color: #3c3c3c';}?>">
 <div class="container">
     <div class="row d-flex justify-content-center align-items-center" style="margin-top: -40px">
         <img src="images/loli.png" class="img-fluid mb-3" style="max-width: 250px; max-height: 250px;"><br>
