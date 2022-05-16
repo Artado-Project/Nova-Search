@@ -42,14 +42,14 @@
                 data-mdb-toggle="tab"
                 href="#ex3-tabs-1"
                 role="tab"
-                style="border-radius: 10px;"
+                style="border-radius: 10px; max-width: 430px;"
                 aria-controls="ex3-tabs-1"
                 aria-selected="true"
             >Loli Search</a
             >
         </li>
         <li class="nav-item" role="presentation">
-            <a style="border-radius: 10px;"
+            <a style="border-radius: 10px; max-width: 430px;"
                 class="nav-link"
                 id="ex3-tab-2"
                 data-mdb-toggle="tab"
@@ -61,7 +61,7 @@
             >
         </li>
         <li class="nav-item" role="presentation">
-            <a style="border-radius: 10px;"
+            <a style="border-radius: 10px; max-width: 430px;"
                 class="nav-link"
                 id="ex3-tab-3"
                 data-mdb-toggle="tab"

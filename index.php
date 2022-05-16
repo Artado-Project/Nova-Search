@@ -28,7 +28,7 @@ $bgsorgu->execute(array());
 $c = $bgsorgu->fetch(PDO::FETCH_ASSOC);
 ?>
 <!--Background degistirme-->
-<body style="background-repeat: no-repeat; background-attachment: fixed; <?php if(isset($c['uye_bg'])){echo 'background: url('.$c['uye_bg'].')';}elseif(!isset($c['uye_bg'])){echo 'background-color: #3c3c3c';}elseif(!isset($_SESSION['isim'])){echo 'background-color: #3c3c3c';} ?>">
+<body style="background-repeat: no-repeat; background-attachment: fixed; <?php if(isset($c['uye_bg'])){echo 'background: url('.$c['uye_bg'].')';}elseif(!isset($c['uye_bg'])){echo 'background-color: #3c3c3c';}?>">
     <!--Loli Search, Artado Project bünyesinde M. Yasin Özkaya tarafından tasarlanıp kodlanmıştır-->
     <!--MDBoostrap kütüphanesi ile kodlanmıştır-->
     <!--Boostrap icon kullanılmıştır-->
@@ -109,7 +109,7 @@ $c = $bgsorgu->fetch(PDO::FETCH_ASSOC);
     <div class="container">
         <div class="row d-flex justify-content-center align-items-center" style="margin-top: 30px">
             <div class="col-md-6">
-                <img src="images/loli.png" class="img-fluid">
+                <img src="https://www.artadosearch.com/Icons/android-chrome-192x192.png" class="img-fluid">
                 <div class="form">
                     <form method="get" action="sonuc.php">
                         <i class="bi-search"></i>
@@ -136,7 +136,7 @@ $c = $bgsorgu->fetch(PDO::FETCH_ASSOC);
             <div class="col-sm-4 mb-2" id="card1">
                 <div class="card">
                     <div class="card-body">
-                        <h1 class="card-text fontlu" id="time"></h1>
+                        <h1 class="card-text fontlu" style="text-transform: uppercase;" id="time"></h1>
                     </div>
                 </div>
             </div>
@@ -354,6 +354,7 @@ $c = $bgsorgu->fetch(PDO::FETCH_ASSOC);
                 time = moment().format('h:mm:ss a');
                 document.getElementById('time').innerHTML = time;
             }, 1000)
+
         }
         realtime();
     </script>

@@ -88,8 +88,9 @@ if(isset($_POST['g'])){
 }
 if(isset($_POST['bg'])){
     $bg = $_POST['bg_link'];
+	$isim = $_SESSION['isim'];
 
-    $sorgu = $db->prepare("UPDATE tarayici_kayit SET uye_bg = ?");
+    $sorgu = $db->prepare("UPDATE tarayici_kayit SET uye_bg = ? WHERE uye_kadi = '$isim'");
     $sorgu->execute(array($bg));
 
     if($sorgu = true){

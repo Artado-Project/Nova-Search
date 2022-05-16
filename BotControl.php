@@ -41,9 +41,9 @@
                 <div class="card-header fontlu text-center"><h5>Sözlük</h5></div>
                 <form method="post">
                     <div class="card-body">
-                        <div class="alert alert-warning">Yanlızca aranan kelimeyi ve açıklamasını giriniz</div>
-                        <input class="form-control mb-3" placeholder="Başlık" name="s_b" required>
-                        <input class="form-control" placeholder="Açıklama" name="s_a" required>
+                        <div class="alert alert-warning">Sadece sözlük başlık ve açıklamasını girin...</div>
+                        <input type="url" class="form-control mb-3" name="s_link" placeholder="Sözlük başlık">
+                        <input type="text" class="form-control" name="s_aciklama" placeholder="Sözlük açıklaması">
                     </div>
                     <div class="card-footer">
                         <button type="submit" class="btn btn-outline-success" name="sozluk">Gönder!</button>
@@ -55,6 +55,7 @@
     </div>
     <?php
     require 'LoliBots/Loli_Wiki_Bots.php';
+    require 'LoliBots/sozluk.php';
     ?>
 </div>
 
