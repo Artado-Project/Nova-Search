@@ -248,6 +248,7 @@ hr.ince {
     color: inherit !important;
     background-color: transparent !important;
     font-weight: bold !important;
+    color: #FFFFFF !important;
 }
 
 .gsc-results .gsc-cursor-box {
@@ -589,7 +590,7 @@ hr.ince {
 }
 
 .gs-spelling, .gs-spelling .gs-spelling-original, .gsc-cursor-page, .gs-spelling a {
-    color: #373737 !important;
+    color: #FFFFFF !important;
     height: 3em;
     font-weight: 400
 }

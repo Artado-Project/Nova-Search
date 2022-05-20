@@ -1,8 +1,8 @@
 <?php
-	require 'LoliBots/+18_onlem.php';
+	require 'Nova_Bots/+18_onlem.php';
 ?>
 
-<!--Loli Anime Wiki-->
+<!--Nova Anime Wiki-->
 <div class="card text-white mb-2" style="background-color: #3c3c3c;">
 	<?php
 		$card_an = $db->prepare("SELECT user_card_title, user_card_muted, user_card_text, user_card_image, user_card_link, user_card_name, user_card_username FROM tarayici_card_anime_users ");
@@ -12,7 +12,7 @@
 			$sorgu = "SELECT * FROM tarayici_card_anime_users WHERE user_card_title LIKE '%$q%' LIMIT 1;";
 			$sorgukontrol = $db->query($sorgu);
 			while ($cikti = $sorgukontrol->fetch(PDO::FETCH_ASSOC)){
-				echo '<span class="badge badge-primary card-header text-center"style="font-size: smaller">Loli Anime Wiki</span><div class="card-header">
+				echo '<span class="badge badge-primary card-header text-center"style="font-size: smaller">Nova Anime Wiki</span><div class="card-header">
                                 <img src="' . $cikti['user_card_image'] . '" class="rounded-1 f-right mb-1 col-md img-fluid" style="max-width: 220px; max-height: 270px;"> 
                                 <h1 class="fontlu">' . $cikti['user_card_title'] . '</h1>
                                 <h5 class="text-muted fontlu">' . $cikti['user_card_muted'] . '</h5>
@@ -36,7 +36,7 @@
 <div class="col-md-12 text-center">
     <!--anime_ekle.php zorunlu kılınması-->
 	<?php
-		require 'LoliBots/anime_ekle.php';
+		require 'Nova_Bots/anime_ekle.php';
 		if(isset($_POST['s'])){
 			echo '
                         <div class="alert alert-warning alert-dismissible fade show col-md-12" role="alert">
@@ -54,7 +54,7 @@
 <div class="gcse-searchresults-only"></div>';
 		}
 	?>
-<!--Loli Random Anime-->
+<!--Nova Random Anime-->
 	<?php
 
         for($b = 2; $b != 0; $b--){

@@ -8,7 +8,7 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title><?php echo @$_GET['q'];?> - Loli Search</title>
+    <title><?php echo @$_GET['q'];?> -  Nova Search</title>
     <link rel="stylesheet" href="css/style.css" type="text/css" />
     <link rel="stylesheet" href="css/mdb.min.css" type="text/css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
@@ -51,7 +51,7 @@ $c = $bgsorgu->fetch(PDO::FETCH_ASSOC);
                     <input type="text" class="form-control form-input" value="<?php require 'search/inpput.php'; echo $q;?>" aria-label="Search" aria-describedby="basic-addon2" name="q" placeholder="Herhangi birşey aratın..." required>
                     <span class="sol-taraf">
                         <a href="index.php">
-                            <img src="images/IMG_074.png" class="img-fluid" style="max-width: 30px; margin-left: 10px;">
+                            <img src="images/artado_but_anime.png" class="img-fluid" style="max-width: 30px; margin-left: 10px;">
                         </a>
                     </span>
                 </form>
@@ -68,7 +68,7 @@ $c = $bgsorgu->fetch(PDO::FETCH_ASSOC);
     <div class="row text-center mt-5">
         <?php require 'search/url.php'; ?>
         <form method="post">
-            <button type="submit" name="web" value="&type=web" class="btn btn-rounded btn-outline-white hover">Web</button>
+            <button type="submit" name="web" class="btn btn-rounded btn-outline-white hover">Web</button>
             <button type="submit" name="gorsel"  class="btn btn-rounded btn-outline-white hover">Görsel</button>
             <button type="submit" name="bilgi" class="btn btn-rounded btn-outline-white hover">Bilgi</button>
             <button type="submit" name="akademi" class="btn btn-rounded btn-outline-white hover">Akademik</button>
@@ -78,19 +78,24 @@ $c = $bgsorgu->fetch(PDO::FETCH_ASSOC);
     <?php
         $url = $_SERVER['REQUEST_URI'];
 
-        if($url == '/Loli-Search/sonuc.php?q='.$q.'&type_web'){
+        $kontrol = explode("&", $url);
+
+        if(@$kontrol[1] == "type_web"){
             require 'search/web-else.php';
         }
-        if($url == '/Loli-Search/sonuc.php?q='.$q.'&type_gorsel'){
+        elseif(@$kontrol[1] == "type_gorsel"){
             require 'search/gorsel.php';
         }
-        if($url == '/Loli-Search/sonuc.php?q='.$q.'&type_bilgi'){
+        elseif(@$kontrol[1] == "type_bilgi"){
             require 'search/bilgi.php';
         }
-        if($url == '/Loli-Search/sonuc.php?q='.$q.'&type_anime'){
+        elseif(@$kontrol[1] == "type_anime"){
             require 'search/anime.php';
         }
-        if($url == '/Loli-Search/sonuc.php?q='.$q.''){
+        elseif(@$kontrol[1] == "type_bilisim"){
+            require 'search/bilişim.php';
+        }
+        else{
 		    require 'search/web-else.php';
 	    }
 

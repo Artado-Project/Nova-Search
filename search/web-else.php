@@ -1,7 +1,7 @@
             <?php
-                require 'LoliBots/+18_onlem.php';
+                require 'Nova_Bots/+18_onlem.php';
             ?>
-            <!--Loli Wiki-->
+            <!--Nova Wiki-->
             <div class="card text-white mb-2" style="background-color: #3c3c3c;">
                 <?php
                     $card_wiki = $db->prepare("SELECT card_baslik, card_muted, card_text, card_image FROM tarayici_card_wiki ");
@@ -11,7 +11,7 @@
                         $sorgu = "SELECT * FROM tarayici_card_wiki WHERE card_baslik LIKE '%$q%' LIMIT 1;";
                         $sorgukontrol = $db->query($sorgu);
                         while ($cikti = $sorgukontrol->fetch(PDO::FETCH_ASSOC)){
-                            echo '<span class="card-header text-center badge badge-success" style="font-size: smaller">Loli Wiki</span><div class="card-header">
+                            echo '<span class="card-header text-center badge badge-success" style="font-size: smaller">Nova Wiki</span><div class="card-header">
                                 <img src="'.$cikti['card_image'].'" class="rounded-1 f-right" style="max-width: 200px; max-height: 220px;"> 
                                 <h1 class="fontlu">'. $cikti['card_baslik'] .'</h1>
                                 <h5 class="text-muted fontlu">'. $cikti['card_muted'] .'</h5>
@@ -32,7 +32,7 @@
                     }
                 ?>
             </div>
-            <!--Loli Anime Wiki-->
+            <!--Nova Anime Wiki-->
             <div class="card text-white mb-2" style="background-color: #3c3c3c;">
                 <?php
                     $card_an = $db->prepare("SELECT user_card_title, user_card_muted, user_card_text, user_card_image, user_card_link, user_card_name, user_card_username FROM tarayici_card_anime_users ");
@@ -42,7 +42,7 @@
                         $sorgu = "SELECT * FROM tarayici_card_anime_users WHERE user_card_title LIKE '%$q%' LIMIT 1;";
                         $sorgukontrol = $db->query($sorgu);
                         while ($cikti = $sorgukontrol->fetch(PDO::FETCH_ASSOC)){
-                            echo '<span class="badge badge-primary card-header text-center"style="font-size: smaller">Loli Anime Wiki</span><div class="card-header">
+                            echo '<span class="badge badge-primary card-header text-center"style="font-size: smaller">Nova Anime Wiki</span><div class="card-header">
                                 <img src="' . $cikti['user_card_image'] . '" class="rounded-1 f-right mb-1 col-md img-fluid" style="max-width: 220px; max-height: 270px;"> 
                                 <h1 class="fontlu">' . $cikti['user_card_title'] . '</h1>
                                 <h5 class="text-muted fontlu">' . $cikti['user_card_muted'] . '</h5>
@@ -63,7 +63,7 @@
                     }
                 ?>
             </div>
-            <!--Loli Sözlük-->
+            <!--Nova Sözlük-->
             <div class="card text-white mb-2 col-md-12"  style="background: #3c3c3c">
                 <?php
                     $card_sozluk = $db->prepare("SELECT * FROM tarayici_sozluk");
@@ -73,7 +73,7 @@
                         $sozluk_sorgu = "SELECT * FROM tarayici_sozluk WHERE sozluk_baslik LIKE '%$q%' LIMIT 1";
                         $sozluk_kontrol = $db->query($sozluk_sorgu);
                         while($cikti = $sozluk_kontrol->fetch(PDO::FETCH_ASSOC)){
-                            echo '<span class="badge card-header badge-info"style="font-size: smaller">Loli Sözlük</span><div class="card-header text-center fontlu"><h3>'.$cikti['sozluk_baslik'].'</h3></div>
+                            echo '<span class="badge card-header badge-info"style="font-size: smaller">Nova Sözlük</span><div class="card-header text-center fontlu"><h3>'.$cikti['sozluk_baslik'].'</h3></div>
                                   <div class="card-body fontlu">'.$cikti['sozluk_aciklama'].'</div>';
 
                         }
@@ -83,7 +83,7 @@
             <div class="col-md-12 text-center">
                 <!--anime_ekle.php zorunlu kılınması-->
                 <?php
-                    require 'LoliBots/anime_ekle.php';
+                    require 'Nova_Bots/anime_ekle.php';
                     if(isset($_POST['s'])){
                         echo '
                         <div class="alert alert-warning alert-dismissible fade show col-md-12" role="alert">
@@ -102,7 +102,7 @@
                     }
                 ?>
             </div>
-            <!--Loli Random Anime-->
+            <!--Nova Random Anime-->
             <div class="card text-white f-right col-md-5" style="background-color: #3c3c3c; margin-left: 0px;">
                 <?php
                     $card_anime = $db->prepare("SELECT tarayici_card_anime_users.user_card_title, tarayici_card_anime_users.user_card_muted, tarayici_card_anime_users.user_card_text, tarayici_card_anime_users.user_card_image, tarayici_card_anime_users.user_card_link, tarayici_card_anime_users.user_card_name, tarayici_card_anime_users.user_card_username tarayici_user_link.user_link_anime, tarayici_user_link.user_link_name, tarayici_user_link.user_link_link FROM tarayici_card_anime_users, tarayici_user_link WHERE tarayici_card_anime_users.user_card_title = tarayici_card_anime_users.user_card_name");
@@ -145,7 +145,7 @@
                 <div class="embed-responsive embed-responsive-16by9">
                     <iframe src="https://discord.com/widget?id=865254296098308096&theme=dark" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
                 </div>
-                <div class="btn btn-outline-info" data-ripple-color="dark"> Loli Search Github: <a href="https://github.com/YasinSenpai/Loli-Search">https://github.com/YasinSenpai/Loli-Search</a></div>
+                <div class="btn btn-outline-info mt-1" data-ripple-color="dark"> Nova Search Github: <a href="https://github.com/YasinSenpai/Nova-Search">Nova Search</a></div>
             </div>
         </div>
         </div>

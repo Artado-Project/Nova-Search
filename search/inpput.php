@@ -4,7 +4,7 @@
 	$w = @$_POST['web'];
 	$g = @$_POST['gorsel'];
 	$b = @$_POST['bilgi'];
-	$a = @$_POST['akademi'];
+	$a = @$_POST['bilisim'];
 	$ani = @$_POST['anime'];
 
 

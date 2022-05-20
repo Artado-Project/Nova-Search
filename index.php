@@ -8,7 +8,7 @@ require 'php/baglan.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Loli Search</title>
+    <title>Nova Search</title>
     <link rel="stylesheet" href="css/style.css" type="text/css" />
     <link rel="stylesheet" href="css/mdb.min.css" type="text/css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
@@ -28,8 +28,8 @@ $bgsorgu->execute(array());
 $c = $bgsorgu->fetch(PDO::FETCH_ASSOC);
 ?>
 <!--Background degistirme-->
-<body style="background-repeat: no-repeat; background-attachment: fixed; <?php if(isset($c['uye_bg'])){echo 'background: url('.$c['uye_bg'].')';}elseif(!isset($c['uye_bg'])){echo 'background-color: #3c3c3c';}?>">
-    <!--Loli Search, Artado Project bünyesinde M. Yasin Özkaya tarafından tasarlanıp kodlanmıştır-->
+<body style="background-repeat: no-repeat; background-attachment: fixed; background-size: cover; <?php if(isset($c['uye_bg'])){echo 'background: url('.$c['uye_bg'].') no-repeat';}elseif(!isset($c['uye_bg'])){echo 'background-color: #333333';}?>">
+    <!--Nova Search, Artado Project bünyesinde M. Yasin Özkaya tarafından tasarlanıp kodlanmıştır-->
     <!--MDBoostrap kütüphanesi ile kodlanmıştır-->
     <!--Boostrap icon kullanılmıştır-->
     <div style="margin-top: 10px"></div>
@@ -51,7 +51,7 @@ $c = $bgsorgu->fetch(PDO::FETCH_ASSOC);
         ?>
 
         <button class="btn btn-outline-success f-right mx-1 h-25" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" data-ripple-color="dark" aria-controls="offcanvasRight"><i class="bi-list"></i></button>
-        <div class="btn btn-outline-warning f-right" data-ripple-color="dark">Bağış Yap</div>
+        <a href="https://www.artadosearch.com/Donate"><div class="btn btn-outline-warning f-right" data-ripple-color="dark">Bağış Yap</div></a>
         <?php
             require 'php/istemci.php';
         ?>
@@ -82,14 +82,14 @@ $c = $bgsorgu->fetch(PDO::FETCH_ASSOC);
                 </select>
                 <br>
                 <a class="btn btn-outline-info mb-3" data-ripple-color="dark" href="#">Ayarlar</a><br>
-                <a class="btn btn-outline-dark mb-3" data-ripple-color="dark" href="https://github.com/YasinSenpai/Loli-Search/">Github</a><br>
-                <a class="btn btn-outline-secondary mb-3" data-ripple-color="dark" href="Loli-Search.php">Hakkımızda</a><br>
-                <a class="btn btn-outline-primary mb-3" data-ripple-color="dark" href="Loli-Search.php">Manifesto'muz</a>
-                <a class="btn btn-outline-success mb-3" data-ripple-color="dark" href="Loli-Search.php">Güncelleme notları</a><br>
+                <a class="btn btn-outline-dark mb-3" data-ripple-color="dark" href="https://github.com/YasinSenpai/Nova-Search/">Github</a><br>
+                <a class="btn btn-outline-secondary mb-3" data-ripple-color="dark" href="Nova-Search.php">Hakkımızda</a><br>
+                <a class="btn btn-outline-primary mb-3" data-ripple-color="dark" href="Nova-Search.php">Manifesto'muz</a>
+                <a class="btn btn-outline-success mb-3" data-ripple-color="dark" href="Nova-Search.php">Güncelleme notları</a><br>
                 <hr class="ince">
                 <div class="col-md-12">
-                    <h3 class="text-center fontlu">Loli Search</h3>
-                    <p class="text-center mb-3">Loli Search'te aramalarınız kaydedilmez. Kimse sizin kim olduğunuzu bilemez. Loli S. ile tamamen anonim olarak internetin sınırlarını keşfedebilirsiniz!</p>
+                    <h3 class="text-center fontlu">Nova Search</h3>
+                    <p class="text-center mb-3">Nova Search'te aramalarınız kaydedilmez. Kimse sizin kim olduğunuzu bilemez. Nova Search ile tamamen anonim olarak internetin sınırlarını keşfedebilirsiniz!</p>
                 </div>
                 <div class="dropdown">
                     <hr class="ince">
@@ -100,7 +100,7 @@ $c = $bgsorgu->fetch(PDO::FETCH_ASSOC);
                     <small class="text-black">İletişim adrressleri için tıklayın</small>
                     <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownDeveloper" style="">
                         <li><a class="dropdown-item" href="#">Discord: YasininFightClub#3200</a></li>
-                        <li><a class="dropdown-item" href="#">İnstagram: yasin.dev__</a></li>
+                        <li><a class="dropdown-item" href="#">İnstagram: yasinldev</a></li>
                     </ul>
                 </div>
             </div>
@@ -109,7 +109,9 @@ $c = $bgsorgu->fetch(PDO::FETCH_ASSOC);
     <div class="container">
         <div class="row d-flex justify-content-center align-items-center" style="margin-top: 30px">
             <div class="col-md-6">
-                <img src="https://www.artadosearch.com/Icons/android-chrome-192x192.png" class="img-fluid">
+                <div class="text-center">
+                    <img src="images/artado_but_anime.png" style="width: 300px;" class="img-fluid mb-3 ">
+                </div>
                 <div class="form">
                     <form method="get" action="sonuc.php">
                         <i class="bi-search"></i>
@@ -134,14 +136,14 @@ $c = $bgsorgu->fetch(PDO::FETCH_ASSOC);
             <!--Tarih - Saat card-->
             <div class="col-md-2" style="margin-left: -20px;"></div>
             <div class="col-sm-4 mb-2" id="card1">
-                <div class="card">
+                <div class="card" style="background-color: #3c3c3c; color: #FFFFFF; border: 1px solid #FFFFFF">
                     <div class="card-body">
                         <h1 class="card-text fontlu" style="text-transform: uppercase;" id="time"></h1>
                     </div>
                 </div>
             </div>
             <div class="col-sm-4 mb-2">
-                <div class="card">
+                <div class="card" style="background-color: #3c3c3c; color: #FFFFFF; border: 1px solid #FFFFFF   ">
                     <div class="card-body">
                         <h1 class="card-text fontlu"><?php echo date('d/m/Y'); ?></h1>
                     </div>

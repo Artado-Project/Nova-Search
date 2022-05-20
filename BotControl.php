@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Loli Search Bot Control</title>
+    <title>Nova Search Bot Control</title>
     <link rel="stylesheet" href="css/style.css" type="text/css" />
     <link rel="stylesheet" href="css/mdb.min.css" type="text/css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
@@ -22,7 +22,7 @@
 
 <div class="container">
     <div class="mb-5"></div>
-    <div class="row">
+    <div class="row justify-content-center">
             <div class="card text-white col-md-5 mx-1" style="background: #3c3c3c">
                 <div class="card-header fontlu text-center"><h5>Wikipedia</h5></div>
                 <form method="post">
@@ -54,8 +54,8 @@
             </div>
     </div>
     <?php
-    require 'LoliBots/Loli_Wiki_Bots.php';
-    require 'LoliBots/sozluk.php';
+    require 'Nova_Bots/Nova_Wiki_Bots.php';
+    require 'Nova_Bots/sozluk.php';
     ?>
 </div>
 
