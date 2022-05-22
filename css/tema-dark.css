@@ -1,0 +1,45 @@
+.card{
+    background-color: #3c3c3c !important;
+    color: #FFFFFF !important;
+}
+
+.index-card{
+    border: 1px solid #FFFFFF !important;
+}
+
+body{
+    background-color: #333333 !important;
+    color: #FFFFFF !important;
+}
+
+.offcanvas{
+    background-color: #3c3c3c !important;
+}
+
+.btn-outline-dark{
+    border: 1px solid #FFFFFf !important;
+    color: #FFFFFF !important;
+}
+
+input{
+    background-color: #3c3c3c !important;
+    color: #FFFFFf !important;
+}
+
+i{
+    color: #FFFFFf !important;
+}
+
+.modal-content{
+    background-color: #333333 !important;
+    color: #FFFFFf !important;
+}
+
+label{
+    color: #FFFFFf !important;
+}
+.hover:hover{
+    background-color: white !important;
+    transition: 0.5s !important;
+    color: #3c3c3c !important;
+}

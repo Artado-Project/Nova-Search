@@ -19,7 +19,7 @@
                                 <h1 class="fontlu">'. $cikti['card_baslik'] .'</h1>
                                 <h5 class="text-muted fontlu">'. $cikti['card_muted'] .'</h5>
                                 <br>
-                                <p style="max-width: 1010x;" class="mb-5 text-white text-decoration-none anti_a">'. $cikti['card_text'] .'...</p>
+                                <p style="max-width: 1010x;" class="mb-5 text-decoration-none anti_a">'. $cikti['card_text'] .'...</p>
                                 <a href="'. $cikti['card_link'] .'"><div class="btn btn-outline-white" style="border-radius: 100px;" data-ripple-color="dark">'. $cikti['card_kaynak'] .'</div>
                                 </a>';
 					if($q == "lgbt" OR $q == "lgb" OR $q == "eşcinsel" OR $q == "eşcinsel evlilik" ){

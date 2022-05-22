@@ -259,7 +259,7 @@
             role="tabpanel"
             aria-labelledby="ex3-tab-3"
         >
-            Tab 3 content
+            --
         </div>
     </div>
 </div>

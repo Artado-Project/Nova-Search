@@ -1,0 +1,65 @@
+.card{
+    background-color: #FFFFFF !important;
+    color: black !important;
+}
+
+.index-card{
+    border: 1px solid #3c3c3c !important;
+}
+
+body{
+    background-color: #F9F9FA !important;
+    color: #3c3c3c !important;
+}
+
+.btn-outline-white{
+    border: 1px solid #3c3c3c !important;
+    color: #3c3c3c !important;
+}
+
+input{
+    background-color: #FFFFFf !important;
+    color: #3c3c3c !important;
+}
+
+i{
+    color: #3c3c3c !important;
+}
+
+.card-header{
+    color: #3c3c3c !important;
+}
+
+.gsc-webResult .gsc-result {
+    padding: 13px 5px 1px 0 !important;
+    background-color: #FFF;
+    border: 0 solid #3c3c3c !important;
+    margin-left: 5px !important;
+}
+
+.gsc-control-cse, .gsc-control-cse .gsc-table-result {
+    font-family: arial !important;
+    color: #3c3c3c !important;
+}
+
+.gs-spelling, .gs-spelling .gs-spelling-original, .gsc-cursor-page, .gs-spelling a {
+    color: #3c3c3c !important;
+    height: 3em;
+    font-weight: 400
+}
+
+
+.gs-webResult .gs-snippet, .gs-visibleUrl, .gs-fileFormatType {
+    background: transparent !important;
+    color: #3c3c3c !important;
+}
+
+.hover:hover{
+    background-color: #FFFFFf!important;
+    transition: 0.5s !important;
+    color: #3c3c3c !important;
+}
+
+p{
+    color: black !important;
+}

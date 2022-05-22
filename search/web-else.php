@@ -16,7 +16,7 @@
                                 <h1 class="fontlu">'. $cikti['card_baslik'] .'</h1>
                                 <h5 class="text-muted fontlu">'. $cikti['card_muted'] .'</h5>
                                 <br>
-                                <p style="max-width: 1010x;" class="mb-5 text-white text-decoration-none anti_a">'. $cikti['card_text'] .'...</p>
+                                <p style="max-width: 1010x;" class="mb-5 text-decoration-none anti_a">'. $cikti['card_text'] .'...</p>
                                 <a href="'. $cikti['card_link'] .'"><div class="btn btn-outline-white" style="border-radius: 100px;" data-ripple-color="dark">'. $cikti['card_kaynak'] .'</div>
                                 </a>';
                             if($q == "lgbt" OR $q == "lgb" OR $q == "eşcinsel" OR $q == "eşcinsel evlilik" ){
@@ -134,18 +134,22 @@
             </div>
         </div>
         <div class="card text-white f-right col-md-5" style="background-color: #3c3c3c;">
-            <div class="card-header text-center text-white"><small>Haber - Duyuru</small></div>
-            <div class="card-header mt-4 mb-5 text-center">
-                HABER BİLGİ AKIŞI BURADA GÖRÜNÜCEK
-            </div>
-        </div>
-        <div class="card text-white f-right col-md-5" style="background-color: #3c3c3c;">
-            <div class="card-header text-center text-white"><small>Github & Discord</small></div>
-            <div class="text-center">
-                <div class="embed-responsive embed-responsive-16by9">
-                    <iframe src="https://discord.com/widget?id=865254296098308096&theme=dark" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
-                </div>
-                <div class="btn btn-outline-info mt-1" data-ripple-color="dark"> Nova Search Github: <a href="https://github.com/YasinSenpai/Nova-Search">Nova Search</a></div>
+            <span class="badge badge-secondary card-header text-center" style="font-size: smaller">Son Eklenen Bilgi Kutusu</span>
+            <div class="card-header">
+                <?php
+                    $card_new = $db->prepare("SELECT * FROM tarayici_card_wiki ORDER BY id DESC LIMIT 0,1");
+                    $card_new->execute(array());
+                    while ($veri_cek = $card_new->fetch(PDO::FETCH_ASSOC)){
+						echo ' <img src="'.$veri_cek['card_image'].'" class="rounded-1 f-right" style="max-width: 200px; max-height: 220px;"> 
+                                <h1 class="fontlu">'. $veri_cek['card_baslik'] .'</h1>
+                                <h5 class="text-muted fontlu">'. $veri_cek['card_muted'] .'</h5>
+                                <br>
+                                <p class="mb-5 text-decoration-none anti_a">'. $veri_cek['card_text'] .'...</p>
+                                <a href="'. $veri_cek['card_link'] .'"><div class="btn btn-outline-white" style="border-radius: 100px;" data-ripple-color="dark">'. $veri_cek['card_kaynak'] .'</div>
+                                </a>';
+                    }
+
+                ?>
             </div>
         </div>
         </div>

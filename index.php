@@ -10,6 +10,13 @@ require 'php/baglan.php';
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Nova Search</title>
     <link rel="stylesheet" href="css/style.css" type="text/css" />
+    <?php
+        if(isset($_SESSION['light'])){
+            echo '<link  rel="stylesheet" type="text/css" href="css/tema-light.css">';
+        }elseif(isset($_SESSION['dark'])){
+            echo '<link rel="stylesheet" type="text/css" href="css/tema-dark.css" />';
+        }
+    ?>
     <link rel="stylesheet" href="css/mdb.min.css" type="text/css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,16 +34,13 @@ $bgsorgu = $db->prepare("SELECT * FROM tarayici_kayit WHERE uye_kadi = '$isim'")
 $bgsorgu->execute(array());
 $c = $bgsorgu->fetch(PDO::FETCH_ASSOC);
 ?>
-<!--Background degistirme-->
-<body style="background-repeat: no-repeat; background-attachment: fixed; background-size: cover; <?php if(isset($c['uye_bg'])){echo 'background: url('.$c['uye_bg'].') no-repeat';}elseif(!isset($c['uye_bg'])){echo 'background-color: #333333';}?>">
+<body style="background-repeat: no-repeat; background-attachment: fixed; background-size: cover; <?php if(isset($c['uye_bg'])){echo 'background: url('.$c['uye_bg'].') no-repeat';}elseif(isset($_SESSION['bg'])){echo 'background: url('.$_SESSION['bg'].') no-repeat';}else{echo 'background-color: #333333';}?>">
     <!--Nova Search, Artado Project bünyesinde M. Yasin Özkaya tarafından tasarlanıp kodlanmıştır-->
-    <!--MDBoostrap kütüphanesi ile kodlanmıştır-->
-    <!--Boostrap icon kullanılmıştır-->
     <div style="margin-top: 10px"></div>
     <div class="container">
         <?php
             if(isset($_SESSION['isim'])){
-                echo '<div class="dropdown"><div class="btn btn-outline-primary mx-1" id="dropdownMenuButton" data-mdb-toggle="dropdown"><i class="bi-person"></i></div><div class="btn btn-outline-light" data-ripple-color="dark" data-mdb-target="#backgroundModal" data-mdb-toggle="modal">Arka plan resmi değiştir</div>
+                echo '<div class="dropdown"><div class="btn btn-outline-primary mx-1" id="dropdownMenuButton" data-mdb-toggle="dropdown"><i class="bi-person"></i></div>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <li><a class="dropdown-item bg-light" href="#">'.$_SESSION['isim'].'</a></li>
                         <li><hr class="dropdown-divider" /></li>
@@ -54,6 +58,7 @@ $c = $bgsorgu->fetch(PDO::FETCH_ASSOC);
         <a href="https://www.artadosearch.com/Donate"><div class="btn btn-outline-warning f-right" data-ripple-color="dark">Bağış Yap</div></a>
         <?php
             require 'php/istemci.php';
+            require 'php/tema.php';
         ?>
         <div class="offcanvas offcanvas-end" style="max-width: 300px" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
             <style>
@@ -68,20 +73,22 @@ $c = $bgsorgu->fetch(PDO::FETCH_ASSOC);
             </div>
             <div class="offcanvas-body">
                <br>
-                <select class="form-select mb-3" aria-label="Default temalar" disabled>
-                    <option selected disabled>Temalar</option>
-                    <option value="1">Aydınlık</option>
-                    <option value="2">Karanlık</option>
-                    <option value="3">Gece</option>
-                </select>
-                <select class="form-select mb-3" aria-label="Disabled diller" disabled>
-                    <option selected disabled>Diller</option>
-                    <option value="1">Aydınlık</option>
-                    <option value="2">Karanlık</option>
-                    <option value="3">Gece</option>
-                </select>
-                <br>
-                <a class="btn btn-outline-info mb-3" data-ripple-color="dark" href="#">Ayarlar</a><br>
+                <form method="post">
+                    <select class="form-select mb-3" aria-label="Default temalar" name="tema">
+                        <option selected disabled>Temalar</option>
+                        <option value="dark">Default: Gece</option>
+                        <option value="light">Aydınlık</option>
+                    </select>
+                    <select class="form-select mb-3" aria-label="Disabled diller" disabled>
+                        <option selected disabled>Diller</option>
+                        <option value="1">İngilizce</option>
+                        <option value="2">Türkçe</option>
+                        <option value="3">Japonca</option>
+                    </select>
+                    <input class="form-control mb-3" placeholder="Arkaplan bakımda" disabled type="url" name="bg_link">
+                    <button class="btn btn-outline-info" name="s" type="submit">Kaydet!</button>
+                </form>
+                <hr class="ince">
                 <a class="btn btn-outline-dark mb-3" data-ripple-color="dark" href="https://github.com/YasinSenpai/Nova-Search/">Github</a><br>
                 <a class="btn btn-outline-secondary mb-3" data-ripple-color="dark" href="Nova-Search.php">Hakkımızda</a><br>
                 <a class="btn btn-outline-primary mb-3" data-ripple-color="dark" href="Nova-Search.php">Manifesto'muz</a>
@@ -90,18 +97,6 @@ $c = $bgsorgu->fetch(PDO::FETCH_ASSOC);
                 <div class="col-md-12">
                     <h3 class="text-center fontlu">Nova Search</h3>
                     <p class="text-center mb-3">Nova Search'te aramalarınız kaydedilmez. Kimse sizin kim olduğunuzu bilemez. Nova Search ile tamamen anonim olarak internetin sınırlarını keşfedebilirsiniz!</p>
-                </div>
-                <div class="dropdown">
-                    <hr class="ince">
-                    <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownDeveloper" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="images/developer.jpg" alt="" width="32" height="32" class="rounded-circle me-2">
-                        <h5 class="text-black mb-3" style="margin-top: 5px">Developer: Aikaiz3L</h5>
-                    </a>
-                    <small class="text-black">İletişim adrressleri için tıklayın</small>
-                    <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownDeveloper" style="">
-                        <li><a class="dropdown-item" href="#">Discord: YasininFightClub#3200</a></li>
-                        <li><a class="dropdown-item" href="#">İnstagram: yasinldev</a></li>
-                    </ul>
                 </div>
             </div>
         </div>
@@ -136,14 +131,14 @@ $c = $bgsorgu->fetch(PDO::FETCH_ASSOC);
             <!--Tarih - Saat card-->
             <div class="col-md-2" style="margin-left: -20px;"></div>
             <div class="col-sm-4 mb-2" id="card1">
-                <div class="card" style="background-color: #3c3c3c; color: #FFFFFF; border: 1px solid #FFFFFF">
+                <div class="card index-card" style="background-color: #3c3c3c; color: #FFFFFF; border: 1px solid #FFFFFF">
                     <div class="card-body">
                         <h1 class="card-text fontlu" style="text-transform: uppercase;" id="time"></h1>
                     </div>
                 </div>
             </div>
             <div class="col-sm-4 mb-2">
-                <div class="card" style="background-color: #3c3c3c; color: #FFFFFF; border: 1px solid #FFFFFF   ">
+                <div class="card index-card" style="background-color: #3c3c3c; color: #FFFFFF; border: 1px solid #FFFFFF   ">
                     <div class="card-body">
                         <h1 class="card-text fontlu"><?php echo date('d/m/Y'); ?></h1>
                     </div>
@@ -161,35 +156,6 @@ $c = $bgsorgu->fetch(PDO::FETCH_ASSOC);
         }
         ?>
     </div>
-
-        <!--Arka plan modal-->
-        <div
-                class="modal fade"
-                id="backgroundModal"
-                data-mdb-backdrop="static"
-                data-mdb-keyboard="false"
-                tabindex="-1"
-                aria-labelledby="staticBackdropLabel"
-                aria-hidden="true"
-        >
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="staticBackdropLabel">Arka plan değiştir</h5>
-                        <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <form method="post">
-                        <div class="modal-body">
-                            <input class="form-control" name="bg_link" type="url" required placeholder="Lütfen bir resim linki giriniz.">
-                        </div>
-                        <div class="modal-footer">
-                            <button type="submit" class="btn btn-primary" name="bg">Değiştir!</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <!--Son-->
 
         <!--Kayit - Giriş modal-->
         <div class="modal fade" id="modalKayit" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">

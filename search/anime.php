@@ -47,7 +47,7 @@
 	?>
 </div>
 <!--Web Sonuç-->
-<div class="card col-md-7 f-left" style="background-color: #3c3c3c; margin-left: -3px; max-width: 760px;">
+<div class="card col-md-7 f-left " style="background-color: #3c3c3c; margin-left: -3px; max-width: 760px;">
 	<?php
 		if(!isset($_GET['gorsel'])){
 			echo '<script async src="https://cse.google.com/cse.js?cx=7fa903cdb7097786d"></script>

@@ -11,6 +11,13 @@ session_start();
     <title><?php echo @$_GET['q'];?> -  Nova Search</title>
     <link rel="stylesheet" href="css/style.css" type="text/css" />
     <link rel="stylesheet" href="css/mdb.min.css" type="text/css" />
+	<?php
+		if(isset($_SESSION['light'])){
+			echo '<link  rel="stylesheet" type="text/css" href="css/tema-light.css">';
+		}elseif(isset($_SESSION['dark'])){
+			echo '<link rel="stylesheet" type="text/css" href="css/tema-dark.css" />';
+		}
+	?>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -58,13 +65,6 @@ $c = $bgsorgu->fetch(PDO::FETCH_ASSOC);
             </div>
         </div>
     </div>
-    <style>
-        .hover:hover{
-            background-color: white;
-            transition: 0.5s;
-            color: #3c3c3c;
-        }
-    </style>
     <div class="row text-center mt-5">
         <?php require 'search/url.php'; ?>
         <form method="post">
