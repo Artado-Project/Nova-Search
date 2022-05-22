@@ -1,6 +1,6 @@
 # Nova Search
 
-![loli](https://user-images.githubusercontent.com/90653146/156834469-a06a4fc1-46b7-4a89-a16d-541d1a36dcd2.png)
+![loli](https://www.artadosearch.com/Icons/artado_but_anime_512.png)
 
 Nova Search açık kaynak kodlu bir arama motorudur ve yalnızca kendi sonuçlarını değil, diğer arama motorlarının sonuçlarını da göstermektedir.
 Nova Search, Bir proxy sunucusu mantığında çalışır. Nova Search'e bir istek gönderirseniz giden istek diğer arama motorlarına isimsiz bir istek olarak gidecektir. 
