@@ -44,8 +44,8 @@ $c = $bgsorgu->fetch(PDO::FETCH_ASSOC);
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <li><a class="dropdown-item bg-light" href="#">'.$_SESSION['isim'].'</a></li>
                         <li><hr class="dropdown-divider" /></li>
-                        <li><a class="dropdown-item" href="#">Hesabım</a></li>
-                        <li><a class="dropdown-item" href="#">İletişim</a></li>
+                        <li><a class="dropdown-item disabled" href="#" disabled>Hesabım</a></li>
+                        <li><a class="dropdown-item" href="mailto:ozkayayasin964@gmail.com">İletişim</a></li>
                         <li><a class="dropdown-item" href="php/logout.php">Çıkış</a></li>
                       </ul>';
             }
@@ -192,49 +192,14 @@ $c = $bgsorgu->fetch(PDO::FETCH_ASSOC);
                         <div class="tab-content">
                             <div class="tab-pane fade show active" id="pills-login" role="tabpanel" aria-labelledby="tab-login">
                                 <form method="post">
-                                    <div class="text-center mb-3">
-                                        <p>Şunlar ile giriş yap:</p>
-                                        <button type="button" class="btn btn-primary btn-floating mx-1" disabled>
-                                            <i class="bi-facebook"></i>
-                                        </button>
-
-                                        <button type="button" class="btn btn-primary btn-floating mx-1" disabled>
-                                            <i class="bi-google"></i>
-                                        </button>
-
-                                        <button type="button" class="btn btn-primary btn-floating mx-1" disabled>
-                                            <i class="bi-twitter"></i>
-                                        </button>
-
-                                        <button type="button" class="btn btn-primary btn-floating mx-1" disabled>
-                                            <i class="bi-github"></i>
-                                        </button>
-                                        <br>
-                                        <small class="text-muted">Bu özellik şuan kullanılmamaktadır</small>
-                                    </div>
-
-                                    <p class="text-center">Ya da:</p>
-
                                     <div class="form-outline mb-4">
-                                        <input type="text" name="g-kadi" id="loginName" class="form-control" />
+                                        <input type="text" name="g-kadi" id="loginName" class="form-control" required />
                                         <label class="form-label" for="loginName">Kullanıcı Adınız</label>
                                     </div>
 
                                     <div class="form-outline mb-4">
-                                        <input type="password" name="g-pass" id="loginPassword" class="form-control" />
+                                        <input type="password" name="g-pass" id="loginPassword" class="form-control" required />
                                         <label class="form-label" for="loginPassword">Şifreniz</label>
-                                    </div>
-
-                                    <div class="row mb-4">
-                                        <div class="col-md-6 d-flex justify-content-center">
-                                            <div class="form-check mb-3 mb-md-0">
-                                                <input class="form-check-input" name="g-hatirla" type="checkbox" value="" id="loginCheck" checked />
-                                                <label class="form-check-label" for="loginCheck">Beni Hatırla </label>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 d-flex justify-content-center">
-                                            <a href="#!">Şifrenizi mi unuttunuz?</a>
-                                        </div>
                                     </div>
 
                                     <button type="submit" class="btn btn-primary btn-block mb-4" name="g">Giriş yap</button>
@@ -242,46 +207,24 @@ $c = $bgsorgu->fetch(PDO::FETCH_ASSOC);
                             </div>
                             <div class="tab-pane fade" id="pills-register" role="tabpanel" aria-labelledby="tab-register">
                                 <form method="post">
-                                    <div class="text-center mb-3">
-                                        <p>Şunlar ile kayıt ol:</p>
-                                        <button type="button" class="btn btn-primary btn-floating mx-1" disabled>
-                                            <i class="bi-facebook"></i>
-                                        </button>
-
-                                        <button type="button" class="btn btn-primary btn-floating mx-1" disabled>
-                                            <i class="bi-google"></i>
-                                        </button>
-
-                                        <button type="button" class="btn btn-primary btn-floating mx-1" disabled>
-                                            <i class="bi-twitter"></i>
-                                        </button>
-
-                                        <button type="button" class="btn btn-primary btn-floating mx-1" disabled>
-                                            <i class="bi-github"></i>
-                                        </button>
-                                        <br>
-                                        <small class="text-muted">Bu özellik şuan kullanılmamaktadır</small>
-                                    </div>
-
-                                    <p class="text-center">Ya da:</p>
 
                                     <div class="form-outline mb-4">
-                                        <input type="text" name="k-kadi" id="registerName" class="form-control" />
+                                        <input type="text" name="k-kadi" id="registerName" class="form-control" required />
                                         <label class="form-label" for="registerName">Kullanıcı Adınız</label>
                                     </div>
 
                                     <div class="form-outline mb-4">
-                                        <input type="text" id="registerUsername" name="k-email" class="form-control" />
+                                        <input type="text" id="registerUsername" name="k-email" class="form-control" required />
                                         <label class="form-label" for="registerUsername">Email Adrresiniz</label>
                                     </div>
 
                                     <div class="form-outline mb-4">
-                                        <input type="password" id="registerPassword" name="k-pass" class="form-control" />
+                                        <input type="password" id="registerPassword" name="k-pass" class="form-control" required />
                                         <label class="form-label" for="registerPassword">Şifreniz</label>
                                     </div>
 
                                     <div class="form-outline mb-4">
-                                        <input type="password" id="registerRepeatPassword" name="k-pass-again" class="form-control" />
+                                        <input type="password" id="registerRepeatPassword" name="k-pass-again" class="form-control" required />
                                         <label class="form-label" for="registerRepeatPassword">Tekrardan Şifreniz</label>
                                     </div>
 

@@ -1,6 +1,6 @@
 <?php
 
-	$q = @$_GET['q'];
+	$q = @$_GET["q"];
 	$w = @$_POST['web'];
 	$g = @$_POST['gorsel'];
 	$b = @$_POST['bilgi'];

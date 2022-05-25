@@ -1,6 +1,8 @@
 <?php
 
-	$q = $_GET['q'];
+	$q = htmlspecialchars($_GET["q"]);
+
+	if($q == "'"){$q = "";}
 
 
 	if(isset($_POST['web'])){

@@ -1,5 +1,5 @@
             <?php
-                require 'Nova_Bots/+18_onlem.php';
+                require 'Nova_Bots/+18_onlem.php'
             ?>
             <!--Nova Wiki-->
             <div class="card text-white mb-2" style="background-color: #3c3c3c;">
