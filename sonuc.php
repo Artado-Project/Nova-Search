@@ -16,7 +16,9 @@ session_start();
 			echo '<link  rel="stylesheet" type="text/css" href="css/tema-light.css">';
 		}elseif(isset($_SESSION['dark'])){
 			echo '<link rel="stylesheet" type="text/css" href="css/tema-dark.css" />';
-		}
+		}else{
+			echo '<link  rel="stylesheet" type="text/css" href="css/tema-light.css">';
+        }
 	?>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -42,13 +44,7 @@ session_start();
     </style>
 
 </head>
-<?php
-@$isim = $_SESSION['isim'];
-$bgsorgu = $db->prepare("SELECT * FROM tarayici_kayit WHERE uye_kadi = '$isim'");
-$bgsorgu->execute(array());
-$c = $bgsorgu->fetch(PDO::FETCH_ASSOC);
-?>
-<body style="background-repeat: no-repeat; background-attachment: fixed; <?php if(isset($c['uye_bg'])){echo 'background: url('.$c['uye_bg'].')';}elseif(!isset($c['uye_bg'])){echo 'background-color: #333333';}?>">
+<body>
 <div class="container">
     <div class="row d-flex justify-content-center align-items-center mt-1">
         <div class="col-md-6 position-fixed" style="z-index: 1;">

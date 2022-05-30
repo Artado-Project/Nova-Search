@@ -2,8 +2,17 @@
 
 	$q = htmlspecialchars($_GET["q"]);
 
-	if($q == "'"){$q = "";}
+	$kontrol = explode("'", $q);
+	if($kontrol[0] == true){
+		$q = str_replace("'", '&#39;', $q);
+	}
+	if($kontrol_2 = substr($q, 0,1) == "'"){
+		$q = str_replace("'", "&#39;", $q);
+	}
+	if($son = substr($q, 0, 1) == "<"){
 
+		header('Location: index.php?Tehlikeli_arama=true');
+	}
 
 	if(isset($_POST['web'])){
 		header('Location: sonuc.php?q='.htmlspecialchars($q).'&type_web');

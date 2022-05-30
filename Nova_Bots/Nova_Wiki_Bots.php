@@ -1,10 +1,10 @@
 <?php
 require 'php/baglan.php';
 
-// Developed by YasinLDev
+// Developed yasiw
 
 function wiki_veri_al($baslik, $son, $detay){
-    @preg_match_all('/' . preg_quote($baslik, '/') .
+    	@preg_match_all('/' . preg_quote($baslik, '/') .
         '(.*?)'. preg_quote($son, '/').'/i', $detay, $m);
 
     return @$m['1'];

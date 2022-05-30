@@ -57,7 +57,7 @@
                 role="tab"
                 aria-controls="ex3-tabs-2"
                 aria-selected="false"
-            >Destekçiler</a
+            >Güncelleme Notları</a
             >
         </li>
         <li class="nav-item" role="presentation">

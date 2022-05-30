@@ -73,16 +73,22 @@ if(isset($_POST['g'])){
 
 			$kontrol = $db->prepare("SELECT * FROM tarayici_kayit WHERE uye_kadi = '$gadi'");
 			$kontrol->execute();
+
 			$veri = $kontrol->fetch(PDO::FETCH_ASSOC);
 			$veri_renk = $veri['uye_tema'];
-			if($veri_renk == 'dark'){
-				$_SESSION['dark'] = true;
-				unset($_SESSION['light']);
-				header('Location: index.php');
-			}elseif($veri_renk == 'light'){
-				$_SESSION['light'] = true;
-				unset($_SESSION['dark']);
-				header('Location: index.php');
+
+			switch ($veri_renk){
+
+				case 'dark':
+					$_SESSION['dark'] = true;
+					unset($_SESSION['light']);
+					header('Location: index.php');
+					break;
+
+				case 'light':
+					$_SESSION['light'] = true;
+					unset($_SESSION['dark']);
+					header('Location: index.php');
 			}
 
             echo '

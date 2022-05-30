@@ -334,7 +334,7 @@
                             echo '<div class="card-body"><div class="alert alert-danger" role="alert">
                                           ANİME EKLEMENİZ İÇİN GİRİŞ YAPMANIZ GEREKMEKTEDİR! 
                                         </div><br>
-                                    <div class="btn btn-outline-secondary align-self-center mb-2">Lütfen Ana Sayfadan Giriş Yapıp Tekrar Deneyiniz...</div>
+                                    <a href="index.php"><div class="btn btn-outline-secondary align-self-center mb-2">Lütfen Ana Sayfadan Giriş Yapıp Tekrar Deneyiniz...</div></a>
                                     <div class="btn btn-outline-danger align-self-center" data-mdb-target="#animeSikayetModal" data-mdb-toggle="modal">Şikayetiniz mi var?</div></div>';
                         }
                     ?>

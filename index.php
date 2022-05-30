@@ -28,13 +28,7 @@ require 'php/baglan.php';
         }
     </style>
 </head>
-<?php
-@$isim = $_SESSION['isim'];
-$bgsorgu = $db->prepare("SELECT * FROM tarayici_kayit WHERE uye_kadi = '$isim'");
-$bgsorgu->execute(array());
-$c = $bgsorgu->fetch(PDO::FETCH_ASSOC);
-?>
-<body style="background-repeat: no-repeat; background-attachment: fixed; background-size: cover; <?php if(isset($c['uye_bg'])){echo 'background: url('.$c['uye_bg'].') no-repeat';}elseif(isset($_SESSION['bg'])){echo 'background: url('.$_SESSION['bg'].') no-repeat';}else{echo 'background-color: #333333';}?>">
+<body style="background-repeat: no-repeat; background-attachment: fixed; background-size: cover; <?php if(isset($_SESSION['bg'])){echo 'background: url('.$_SESSION['bg'].') no-repeat fixed; background-size: cover;';}else{echo 'background-color: #333333';}?>">
     <!--Nova Search, Artado Project bünyesinde M. Yasin Özkaya tarafından tasarlanıp kodlanmıştır-->
     <div style="margin-top: 10px"></div>
     <div class="container">
@@ -44,7 +38,7 @@ $c = $bgsorgu->fetch(PDO::FETCH_ASSOC);
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <li><a class="dropdown-item bg-light" href="#">'.$_SESSION['isim'].'</a></li>
                         <li><hr class="dropdown-divider" /></li>
-                        <li><a class="dropdown-item disabled" href="#" disabled>Hesabım</a></li>
+                        <li><a class="dropdown-item disabled" href="#" disabled>Hesabım (Bakımda!)</a></li>
                         <li><a class="dropdown-item" href="mailto:ozkayayasin964@gmail.com">İletişim</a></li>
                         <li><a class="dropdown-item" href="php/logout.php">Çıkış</a></li>
                       </ul>';
@@ -59,6 +53,7 @@ $c = $bgsorgu->fetch(PDO::FETCH_ASSOC);
         <?php
             require 'php/istemci.php';
             require 'php/tema.php';
+            require 'Nova_Bots/background.php';
         ?>
         <div class="offcanvas offcanvas-end" style="max-width: 300px" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
             <style>
@@ -75,6 +70,7 @@ $c = $bgsorgu->fetch(PDO::FETCH_ASSOC);
                <br>
                 <form method="post">
                     <select class="form-select mb-3" aria-label="Default temalar" name="tema">
+
                         <option selected disabled>Temalar</option>
                         <option value="dark">Default: Gece</option>
                         <option value="light">Aydınlık</option>
@@ -85,7 +81,7 @@ $c = $bgsorgu->fetch(PDO::FETCH_ASSOC);
                         <option value="2">Türkçe</option>
                         <option value="3">Japonca</option>
                     </select>
-                    <input class="form-control mb-3" placeholder="Arkaplan bakımda" disabled type="url" name="bg_link">
+                    <input class="form-control mb-3" placeholder="Arkaplan Url Girin" type="url" name="bg_link">
                     <button class="btn btn-outline-info" name="s" type="submit">Kaydet!</button>
                 </form>
                 <hr class="ince">
