@@ -15,7 +15,15 @@ require 'php/baglan.php';
             echo '<link  rel="stylesheet" type="text/css" href="css/tema-light.css">';
         }elseif(isset($_SESSION['dark'])){
             echo '<link rel="stylesheet" type="text/css" href="css/tema-dark.css" />';
+        }else{
+            echo '<link rel="stylesheet" type="text/css" href="css/tema-light.css" />';
         }
+
+        if(!isset($_SESSION['tur']) OR $_SESSION['tur'] == "" OR $_SESSION['tur'] == null){
+            $_SESSION['tur'] = true;
+            $_SESSION['tur'] = 'Anime';
+        }
+
     ?>
     <link rel="stylesheet" href="css/mdb.min.css" type="text/css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
@@ -34,13 +42,16 @@ require 'php/baglan.php';
     <div class="container">
         <?php
             if(isset($_SESSION['isim'])){
-                echo '<div class="dropdown"><div class="btn btn-outline-primary mx-1" id="dropdownMenuButton" data-mdb-toggle="dropdown"><i class="bi-person"></i></div>
+                $isim = $_SESSION['isim'];
+                $sorgu = $db->query("SELECT * FROM tarayici_kayit WHERE uye_kadi = '$isim'");
+                $c = $sorgu->fetch(PDO::FETCH_ASSOC);
+                echo '<div class="dropdown"><img src="'.$c['uye_pp'].'" class="img-fluid" id="dropdownMenuButton" data-mdb-toggle="dropdown" width="50" style="border-radius: 3px; cursor: pointer;">
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <li><a class="dropdown-item bg-light" href="#">'.$_SESSION['isim'].'</a></li>
-                        <li><hr class="dropdown-divider" /></li>
-                        <li><a class="dropdown-item disabled" href="#" disabled>Hesabım (Bakımda!)</a></li>
-                        <li><a class="dropdown-item" href="mailto:ozkayayasin964@gmail.com">İletişim</a></li>
-                        <li><a class="dropdown-item" href="php/logout.php">Çıkış</a></li>
+                        <li><a class="dropdown-item bg-light" href="#" style="color: black !important;">'.$_SESSION['isim'].'</a></li>
+                        <li><hr class="dropdown-divider" style="color: black !important;" /></li>
+                        <li><a class="dropdown-item" href="myacc.php" style="color: black !important;">Hesabım</a></li>
+                        <li><a class="dropdown-item" style="color: black !important;" href="mailto:ozkayayasin964@gmail.com">İletişim</a></li>
+                        <li><a class="dropdown-item" style="color: black !important;" href="php/logout.php">Çıkış</a></li>
                       </ul>';
             }
             elseif(!isset($_SESSION['isim'])){
@@ -80,6 +91,12 @@ require 'php/baglan.php';
                         <option value="1">İngilizce</option>
                         <option value="2">Türkçe</option>
                         <option value="3">Japonca</option>
+                    </select>
+                    <select class="form-select mb-3" aria-label="tür" name="tur">
+                        <option selected disabled><?= @$_SESSION['tur'] ?></option>
+                        <option  value="Normal">Normal</option>
+                        <option value="Anime">Anime</option>
+                        <option value="HAnime">HAnime</option>
                     </select>
                     <input class="form-control mb-3" placeholder="Arkaplan Url Girin" type="url" name="bg_link">
                     <button class="btn btn-outline-info" name="s" type="submit">Kaydet!</button>
@@ -141,19 +158,12 @@ require 'php/baglan.php';
                 </div>
             </div>
         </div>
-        <?php
-        if(isset($_SESSION['isim'])){
-            echo '<div class="row align-items-center justify-content-center">
-            <div class="alert alert-info alert-dismissible fade show col-md-9 text-center" role="alert">
-            <i class="bi bi-info-square"></i> Sayın kullanıcımız güvenlik protokollerimiz sebebiyle bilgileriniz sunucularımızda (Session) tutulmaktadır eğer ki mevcut tarayıcı kapatılırsa hesap bilgilerinizi girerek tekrardan giriş yapmanız gerekmektedir (Bilgileriniz silinmez yanlızca oturumunuz kapanır) Anlayışınız için teşekkürler
-                              <button type="button" class="btn-close" data-mdb-dismiss="alert" aria-label="Close"></button>
-                            </div>
-                    </div> ';
-        }
-        ?>
+        <?php if(@$_SESSION['tur'] == 'HAnime'){ ?>
+            <div class="alert alert-danger text-center">Sayın kullanıcımız, Hanime +18 bir özelliktir devam etmeniz durumunda Nova Search hiçbir sorumluluk kabul etmemektedir!</div>
+        <?php } ?>
     </div>
 
-        <!--Kayit - Giriş modal-->
+
         <div class="modal fade" id="modalKayit" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -169,6 +179,7 @@ require 'php/baglan.php';
                                         role="tab"
                                         aria-controls="pills-login"
                                         aria-selected="true"
+                                        style="color: #3c3c3c !important;"
                                 >Giriş Yap</a
                                 >
                             </li>
@@ -181,6 +192,7 @@ require 'php/baglan.php';
                                         role="tab"
                                         aria-controls="pills-register"
                                         aria-selected="false"
+                                        style="color: #3c3c3c !important;"
                                 >Kayıt Ol</a
                                 >
                             </li>

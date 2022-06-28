@@ -63,3 +63,11 @@ i{
 p{
     color: black !important;
 }
+
+.gsc-webResult .gs-webResult > .gs-result > .gs-spelling > .gs-spelling-original{
+    color: #3c3c3c !important;
+}
+a{
+    color: #3c3c3c !important;
+    transition: 0.5s;
+}

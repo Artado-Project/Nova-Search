@@ -20,16 +20,7 @@ if(isset($_POST['wikipedia'])) {
     $wikipedia_muted = wiki_veri_al('<div class="tagline">', '</div>', $veri_cek);
     //$wikipedia_image = wiki_veri_al('<div class="thumbinner" style="width:222px;">','</a>', $veri_cek);
     $wikipedia_detay = wiki_veri_al('<p>', '</p>', $veri_cek);
-
-    /*
-     if(!isset($wikipedia_image[0])){
-        $wikipedia_image = wiki_veri_al('<td colspan="2" style="text-align:center;text-align: center">','</a>', $veri_cek);
-        if(!isset($wikipedia_image[0])){
-            $wikipedia_image = wiki_veri_al('<div class="floatnone">','</a>', $veri_cek);
-        }
-    }
-     */
-
+    
     $baslik = $wikipedia_baslik[0];
     $muted = $wikipedia_muted[0];
     $detay = $wikipedia_detay[0];

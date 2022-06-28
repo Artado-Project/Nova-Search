@@ -6,6 +6,7 @@ if(isset($_POST['k'])) {
     $kemail = $_POST['k-email'];
     $ksifre = md5($_POST['k-pass']);
     $ksifretekrar = md5($_POST['k-pass-again']);
+    $pp = 'https://i.pinimg.com/originals/45/28/d7/4528d7fa2ca3fc8407cdb9f0e6c76522.jpg';
     if($ksifre != $ksifretekrar){
         echo '<div class="alert alert-warning">Şifreleriniz eşleşmiyor!</div>';
     }else {
@@ -21,9 +22,9 @@ if(isset($_POST['k'])) {
                 </div>';
         } else{
             try {
-                $sorgu = $db ->prepare('INSERT INTO tarayici_kayit (uye_kadi, uye_email, uye_sifre) VALUES (?,?,?)');
+                $sorgu = $db ->prepare('INSERT INTO tarayici_kayit (uye_kadi, uye_email, uye_sifre, uye_pp) VALUES (?,?,?,?)');
                 $ekle = $sorgu ->execute([
-                    $kadi, $kemail, $ksifre
+                    $kadi, $kemail, $ksifre, $pp
                 ]);
             }catch (Exception $e){
                 echo $e->getMessage();
@@ -70,7 +71,9 @@ if(isset($_POST['g'])){
         $say = $kullanicisor->rowCount();
         if ($say == 1) {
             $_SESSION['isim'] = $gadi;
-
+            if($_SESSION['isim'] == 'nova_admin'){
+                $_SESSION['admin'] = true;
+            }
 			$kontrol = $db->prepare("SELECT * FROM tarayici_kayit WHERE uye_kadi = '$gadi'");
 			$kontrol->execute();
 

@@ -26,6 +26,12 @@
 	elseif(isset($_POST['akademi'])){
 		header('Location: sonuc.php?q='.htmlspecialchars($q).'&type_bilisim');
 	}
-	elseif(isset($_POST['anime'])){
-		header('Location: sonuc.php?q='.htmlspecialchars($q).'&type_anime');
-	}
+    if($_SESSION['tur'] == 'Anime' OR $_SESSION['tur'] == 'HAnime' ){
+        if(isset($_POST['anime'])){
+            header('Location: sonuc.php?q='.htmlspecialchars($q).'&type_anime');
+        }
+    }if($_SESSION['tur'] == 'HAnime'){
+        if(isset($_POST['hanime'])){
+            header('Location: sonuc.php?q='.htmlspecialchars($q).'&type_hanime');
+        }
+    }

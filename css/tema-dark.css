@@ -2,7 +2,6 @@
     background-color: #3c3c3c !important;
     color: #FFFFFF !important;
 }
-
 .index-card{
     border: 1px solid #FFFFFF !important;
 }
@@ -42,4 +41,8 @@ label{
     background-color: white !important;
     transition: 0.5s !important;
     color: #3c3c3c !important;
+}
+a{
+    color: #FFFFFf !important;
+    transition: 0.5s;
 }

@@ -1,34 +1,16 @@
 <?php
 
 	require 'baglan.php';
-	if(isset($_POST['tema'])){
+	if(isset($_POST['s'])){
 
 		// TEMA İŞLEMİ KAYITSIZ & ARKAPLAN İŞLEMİ KAYITSIZ
 
 		$renk = $_POST['tema'];
 		$name = $_SESSION['isim'];
 		$bg = $_POST['bg_link'];
+        $tur = $_POST['tur'];
 
-		if(!isset($_SESSION['isim'])){
-			switch ($renk){
 
-				case "dark":
-					$_SESSION['dark'] = true;
-					unset($_SESSION['light']);
-					header('Location: index.php');
-					break;
-
-				case "light":
-					$_SESSION['light'] = true;
-					unset($_SESSION['dark']);
-					header('Location: index.php');
-					break;
-			}
-
-			if($bg!=""){
-				$_SESSION['bg'] = $bg;
-			}
-		}
 		if(isset($_SESSION['isim'])){
 			$ekle = $db->prepare("UPDATE tarayici_kayit SET uye_tema = '$renk' WHERE uye_kadi = '$name'");
 			$ekle->execute(array());
@@ -71,27 +53,50 @@
 						echo '<div class="alert alert-danger">Bir hata meydana geldi lütfen hatanızı bildiriniz!</div>';
 				}
 			}
+
+            $kontrol = $db->prepare("SELECT * FROM tarayici_kayit WHERE uye_kadi = '$name'");
+            $kontrol->execute();
+
+            $veri = $kontrol->fetch(PDO::FETCH_ASSOC);
+            $veri_renk = $veri['uye_tema'];
 		}
-		$kontrol = $db->prepare("SELECT * FROM tarayici_kayit WHERE uye_kadi = '$name'");
-		$kontrol->execute();
 
-		$veri = $kontrol->fetch(PDO::FETCH_ASSOC);
-		$veri_renk = $veri['uye_tema'];
+        switch ($renk){
 
-		switch ($veri_renk){
+            case "dark":
+                $_SESSION['dark'] = true;
+                unset($_SESSION['light']);
+                header('Location: index.php');
+                break;
 
-			case 'dark':
-				$_SESSION['dark'] = true;
-				unset($_SESSION['light']);
-				header('Location: index.php');
-				break;
+            case "light":
+                $_SESSION['light'] = true;
+                unset($_SESSION['dark']);
+                header('Location: index.php');
+                break;
+        }
 
-			case 'light':
-				$_SESSION['light'] = true;
-				unset($_SESSION['dark']);
-				header('Location: index.php');
+        if($bg!=""){
+            $_SESSION['bg'] = $bg;
+        }
 
-		}
+        switch ($tur){
+
+            case 'Normal':
+                $_SESSION['tur'] = 'Normal';
+                header('Location: index.php?type=safe');
+                break;
+
+            case 'HAnime':
+                $_SESSION['tur'] = 'HAnime';
+                header('Location: index.php?type=hanime!');
+                break;
+
+            default:
+                $_SESSION['tur'] = 'Anime';
+                header('Location: index.php?type=anime');
+                break;
+        }
 
 
 	}

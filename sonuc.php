@@ -19,6 +19,10 @@ session_start();
 		}else{
 			echo '<link  rel="stylesheet" type="text/css" href="css/tema-light.css">';
         }
+
+    if(!isset($_SESSION['tur']) OR $_SESSION['tur'] == "" OR $_SESSION['tur'] == null){
+        $_SESSION['tur'] = 'Anime';
+    }
 	?>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -30,11 +34,7 @@ session_start();
         .fontlu{
             font-family: 'Quicksand', sans-serif;
         }
-        a{
-            color: #3c3c3c;
-            transition: 0.5s;
 
-        }
         .anti_a{
             pointer-events: none;
         }
@@ -68,7 +68,14 @@ session_start();
             <button type="submit" name="gorsel"  class="btn btn-rounded btn-outline-white hover">Görsel</button>
             <button type="submit" name="bilgi" class="btn btn-rounded btn-outline-white hover">Bilgi</button>
             <button type="submit" name="akademi" class="btn btn-rounded btn-outline-white hover">Akademik</button>
-            <button type="submit" name="anime" class="btn btn-rounded btn-outline-white hover">Anime</button>
+            <?php
+                if($_SESSION['tur'] == 'Anime' OR $_SESSION['tur'] == 'HAnime'){
+                    echo '<button type="submit" name="anime" class="btn btn-rounded btn-outline-white hover">Anime</button>';
+                }
+                if($_SESSION['tur'] == 'HAnime'){
+                    echo '<button type="submit" name="hanime" class="btn mx-1 btn-rounded btn-outline-danger hover">HAnime</button>';
+                }
+            ?>
         </form>
     </div>
     <?php
@@ -90,6 +97,9 @@ session_start();
         }
         elseif(@$kontrol[1] == "type_bilisim"){
             require 'search/bilişim.php';
+        }
+        elseif(@$kontrol[1] == "type_hanime"){
+            require 'search/HAnime.php';
         }
         else{
 		    require 'search/web-else.php';
