@@ -1,6 +1,7 @@
 <?php
 require 'php/baglan.php';
-
+require 'php/istemci.php';
+session_start();
 $url = $_SERVER['REQUEST_URI'];
 $data = $_GET['user'];
 
