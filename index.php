@@ -10,6 +10,8 @@ require 'php/baglan.php';
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Nova Search</title>
     <link rel="stylesheet" href="css/style.css" type="text/css" />
+    <meta name="keywords" content="arama, arama motoru, yerli, artado, gizlilik, milli, türk yapımı, güvenli, açık kaynak, reklamsız, reklamsız arama motoru, search, search engine, privacy, security, tarayıcı, browser, celer, anime, animeli arama motoru, animeci, yerli anime, hentaili arama motoru">
+    <meta name="description" content="Open source, Anime, Private and Anonymous Search engine ">
     <?php
         if(isset($_SESSION['light'])){
             echo '<link  rel="stylesheet" type="text/css" href="css/tema-light.css">';

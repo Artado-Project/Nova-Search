@@ -8,6 +8,9 @@ if(isset($_POST['n_u'])){
     $sorgufs = $db->prepare("UPDATE tarayici_card_anime_users SET user_card_username = ? WHERE user_card_username = '$suan'");
     $sorgua = $db->prepare("UPDATE tarayici_hanime_card_users SET user_card_username_ha = ? WHERE user_card_username_ha = '$suan'");
 
+    $kontrol = $db->prepare("SELECT * FROM tarayici_kayit WHERE uye_kadi = '$newname'");
+    $kontrol->execute();
+
     $sorgu->bindParam(1, $newname, PDO::PARAM_STR);
     $sorgufs->bindParam(1, $newname, PDO::PARAM_STR);
     $sorgua->bindParam(1, $newname, PDO::PARAM_STR);
@@ -15,19 +18,23 @@ if(isset($_POST['n_u'])){
 
     $sorgu->execute();$sorgufs->execute();$sorgua->execute();
 
-    if ($sorgu->rowCount() > 0 AND $sorgufs->rowCount() > 0 AND $sorgua->rowCount() > 0) {
-        echo'<div class="alert alert-info alert-dismissible fade show col-md-12 f-right" role="alert">
-                  <strong>Başarılı!</strong> Kullanıcı adınız değiştirilmiştir.
-                  <button type="button" class="btn-close" data-mdb-dismiss="alert" aria-label="Close"></button>
-                </div>';
-        $_SESSION['isim'] = $newname;
-        header("Location: myacc.php");
-    } else {
+    if($kontrol->rowCount() > 0) {
         echo '
                 <div class="alert alert-warning alert-dismissible fade show col-md-12 f-right" role="alert">
                   <strong>Hata!</strong> Kullanıcı adı başkası tarafından alınmış.
                   <button type="button" class="btn-close" data-mdb-dismiss="alert" aria-label="Close"></button>
                 </div>';
+    } else {
+        if ($sorgu->rowCount() > 0 AND $sorgufs->rowCount() > 0 AND $sorgua->rowCount() > 0) {
+            echo'<div class="alert alert-info alert-dismissible fade show col-md-12 f-right" role="alert">
+                  <strong>Başarılı!</strong> Kullanıcı adınız değiştirilmiştir.
+                  <button type="button" class="btn-close" data-mdb-dismiss="alert" aria-label="Close"></button>
+                </div>';
+            $_SESSION['isim'] = $newname;
+            header("Location: myacc.php");
+        } else {
+            echo '<div class="alert alert-danger">Bir hata meydana geldi! <div class="f-right">Hata kodu: MY_ACC:35</div> </div>';
+        }
     }
 }
 
