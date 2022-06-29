@@ -7,6 +7,7 @@ if(isset($_POST['k'])) {
     $ksifre = md5($_POST['k-pass']);
     $ksifretekrar = md5($_POST['k-pass-again']);
     $pp = 'https://i.pinimg.com/originals/45/28/d7/4528d7fa2ca3fc8407cdb9f0e6c76522.jpg';
+    $hakkimda = 'Henüz bir hakkımda açıklaması eklenmemiştir.';
     if($ksifre != $ksifretekrar){
         echo '<div class="alert alert-warning">Şifreleriniz eşleşmiyor!</div>';
     }else {
@@ -22,9 +23,9 @@ if(isset($_POST['k'])) {
                 </div>';
         } else{
             try {
-                $sorgu = $db ->prepare('INSERT INTO tarayici_kayit (uye_kadi, uye_email, uye_sifre, uye_pp) VALUES (?,?,?,?)');
+                $sorgu = $db ->prepare('INSERT INTO tarayici_kayit (uye_kadi, uye_email, uye_sifre, uye_pp, uye_hakkimda) VALUES (?,?,?,?,?)');
                 $ekle = $sorgu ->execute([
-                    $kadi, $kemail, $ksifre, $pp
+                    $kadi, $kemail, $ksifre, $pp, $hakkimda
                 ]);
             }catch (Exception $e){
                 echo $e->getMessage();
@@ -35,7 +36,8 @@ if(isset($_POST['k'])) {
                   Kayıt işlemi <strong>Başarlı!</strong> Sayfa yenileniyor...
                   <button type="button" class="btn-close" data-mdb-dismiss="alert" aria-label="Close"></button>
                 </div>';
-                echo '<meta http-equiv="refresh" content="3;url=index.php">';
+                $_SESSION['isim'] == $kadi;
+                echo '<meta http-equiv="refresh" content="3;url=myacc.php">';
             } else {
                 echo '
                 <div class="alert alert-danger alert-dismissible fade show col-md-12" role="alert">

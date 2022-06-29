@@ -148,7 +148,7 @@ require 'Nova_Bots/+18_onlem.php'
         $anime_sorgu = "SELECT * FROM tarayici_card_anime_users, tarayici_user_link ORDER BY RAND() LIMIT 1";
         $anime_sorgukontrol = $db->query($anime_sorgu);
         while ($cikti = $anime_sorgukontrol->fetch(PDO::FETCH_ASSOC)) {
-            echo '<span class="badge badge-warning card-header text-center"style="font-size: smaller">Random Animeler (Oluşturan Kullanıcı: ' . $cikti['user_card_username'] . ')</span>
+            echo '<span class="badge badge-warning card-header text-center"style="font-size: smaller">Random Animeler (Oluşturan Kullanıcı: <a style="color: #0c56d0!important;" href="visitor_account.php?user='. $cikti['user_card_username'] .'"> ' . $cikti['user_card_username'] . '</a>)</span>
                                         <div class="card-header">
                                        <img src="' . $cikti['user_card_image'] . '" class="rounded-1 f-right " style="max-width: 150px;"> 
                                        <h1 class="fontlu">' . $cikti['user_card_title'] . '</h1>
@@ -176,7 +176,7 @@ require 'Nova_Bots/+18_onlem.php'
                 break;
             }else{
                 echo '
-<span class="badge badge-danger card-header text-center"style="font-size: smaller">Random HAnimeler (Oluşturan Kullanıcı: ' . $cikti['user_card_username_ha'] . ')</span>
+<span class="badge badge-danger card-header text-center"style="font-size: smaller">Random HAnimeler (Oluşturan Kullanıcı: <a style="color: #0c56d0!important;" href="visitor_account.php?user='. $cikti['user_card_username_ha'] .'"> ' . $cikti['user_card_username_ha'] . '</a>)</span>
                                         <div class="card-header">
                                        <img src="' . $cikti['user_card_image_ha'] . '" class="rounded-1 f-right " style="max-width: 150px;"> 
                                        <h1 class="fontlu">' . $cikti['user_card_title_ha'] . '</h1>
@@ -195,7 +195,7 @@ require 'Nova_Bots/+18_onlem.php'
 
             }
         }
-    }else{
+    }elseif($_SESSION['tur'] == 'Normal'){
         echo '<span class="badge badge-secondary card-header text-center">Hava Durumu</span>
         <div class="card-header">'; ?> <a class="weatherwidget-io" style="border-radius: 3px;" href="https://forecast7.com/tr/41d0128d98/istanbul/" data-label_1="İSTANBUL" data-label_2="Hava Durumu" data-theme="original" >İSTANBUL Hava Durumu</a>
     <script>

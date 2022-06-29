@@ -61,23 +61,20 @@ session_start();
             <div class="card col-md-6 background text-white mx-1">
                 <div class="card-body text-center">
                     <img class="img-fluid rounded-circle mb-4" width="160" src="<?php
-                    $pp_sorgu = "SELECT uye_pp FROM tarayici_kayit WHERE uye_kadi = '$isim' ";
+                    $pp_sorgu = "SELECT * FROM tarayici_kayit WHERE uye_kadi = '$isim' ";
                     $pp_kontrol = $db->query($pp_sorgu);
                     $pp_cikti = $pp_kontrol->fetch(PDO::FETCH_ASSOC);
                     echo $pp_cikti['uye_pp'];
                     ?>">
-                    <h3 class="mb-4"><?php echo $_SESSION['isim']; ?></h3>
-                    <div class="justify-content-center">
-                        <div class="btn-group shadow-0" role="group">
-                            <div class="btn-sm mx-2 mb-1 btn-outline-secondary" type="button" data-mdb-target="#hesapModal" data-mdb-toggle="modal">Kullanıc adı değiştir</div>
-                            <div class="btn-sm mx-2 mb-1 btn-outline-warning" type="button" data-mdb-target="#sifreModal" data-mdb-toggle="modal">Şifreni değiştir</div>
-                            <div class="btn-sm mx-2 btn-outline-danger" type="button" data-mdb-target="#hesapsilModal" data-mdb-toggle="modal">Hesabı sil</div>
-                            <div class="btn-sm mx-2 btn-outline-success" type="button" data-mdb-target="#ppModal" data-mdb-toggle="modal">Profil Fotoğrafı</div>
-                        </div>
-                    </div>
+                    <h3 class="mb-4"><?php echo $_SESSION['isim']; ?><br><small style="font-size: medium" class="fontlu"><b><?php echo $pp_cikti['uye_hakkimda']; ?></b></small></h3>
+                    <div class="btn mx-1 mb-1 btn-outline-secondary" type="button" data-mdb-target="#hesapModal" data-mdb-toggle="modal">Kullanıc adı değiştir</div>
+                    <div class="btn mx-1 mb-1 btn-outline-warning" type="button" data-mdb-target="#sifreModal" data-mdb-toggle="modal">Şifreni değiştir</div>
+                    <div class="btn mx-1 mb-1 btn-outline-danger" type="button" data-mdb-target="#hesapsilModal" data-mdb-toggle="modal">Hesabı sil</div><br>
+                    <div class="btn mx-1 btn-outline-success" type="button" data-mdb-target="#ppModal" data-mdb-toggle="modal">Profil Fotoğrafı</div>
+                    <div class="btn mx-1 btn-outline-dark" type="button" data-mdb-target="#hakkimdaModal" data-mdb-toggle="modal">Hakkımda</div>
                 </div>
             </div>
-            <div class="col-md-5 card overflow-auto background text-white text-center" style="max-height: 330px;">
+            <div class="col-md-5 card overflow-auto background text-white text-center" style="max-height: 383px;">
                 <div class="card-body">
                     <h3 class="fontlu">Onaylanan Paylaşımlarım</h3>
                     <div class="overflow-auto scrollbar"><br>
@@ -254,6 +251,38 @@ session_start();
                     <div class="d-grid gap-2 d-md-flex justify-content-md-center">
                         <button class="btn btn-outline-danger" type="submit" data-mdb-ripple-color="dark" name="hesapsil"><i class="bi bi-exclamation-circle"></i> Hesabımı Sil <i class="bi bi-exclamation-circle"></i></button>
                         <button class="btn btn-outline-success" data-mdb-dismiss="modal" aria-label="Close" type="button">Vazgeç</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div
+        class="modal fade"
+        id="hakkimdaModal"
+        data-mdb-backdrop="static"
+        data-mdb-keyboard="false"
+        tabindex="-1"
+        aria-labelledby="staticBackdropLabel"
+        aria-hidden="true"
+>
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-center" id="staticBackdropLabel">Hesap İşlemleri</h5>
+                <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form method="post">
+                    <div class="text-center">
+                        <div class="input-group mb-4">
+                            <input class="form-control form-icon-chat" required name="hkm" type="text" placeholder="Hakkımda yazısı ekleyin!" aria-label="Lütfen profil foto. linkini yapıştırın" aria-describedby="icon" />
+                            <span class="input-group-text text-center" id="icon"><i class="bi-chat"></i></span>
+                        </div>
+                    </div>
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+                        <button class="btn btn-outline-success" type="submit" data-mdb-ripple-color="dark" name="hakkimda">Onayla</button>
+                        <button class="btn btn-outline-danger" data-mdb-dismiss="modal" aria-label="Close" type="button">Vazgeç</button>
                     </div>
                 </form>
             </div>

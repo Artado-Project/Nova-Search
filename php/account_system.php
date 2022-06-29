@@ -103,3 +103,20 @@ if (isset($_POST['hesapsil'])){
         session_destroy();
     }
 }
+
+if (isset($_POST['hakkimda'])){
+    $suan = $_SESSION['isim'];
+    $hkm = $_POST['hkm'];
+    $update = $db->prepare("UPDATE tarayici_kayit SET uye_hakkimda = '$hkm' WHERE uye_kadi = '$suan'");
+    $update->execute();
+
+    if($update){
+        echo'<div class="alert alert-info alert-dismissible fade show col-md-12 f-right" role="alert">
+                  <strong>Başarılı!</strong> Hakkımda kısmı başarıyla eklenmiştir.
+                  <button type="button" class="btn-close" data-mdb-dismiss="alert" aria-label="Close"></button>
+                </div>';
+        echo '<meta http-equiv="refresh" content="3;url=myacc.php">';
+    } else {
+        echo '<div class="alert alert-danger">Hata! bir hata meydana geldi! <div class="f-right">Hata_Kodu: MY_ACC:120</div> </div>';
+    }
+}
