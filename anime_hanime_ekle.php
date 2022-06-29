@@ -230,8 +230,8 @@ session_start();
                                     </div>
                                     <small class="text-muted">Max. 500 karakter</small>
                                     <div class="form-outline mb-4">
-                                        <input type="text" id="form3Example4" maxlength="500" name="ha_aciklama" class="form-control"required />
-                                        <label class="form-label" for="form3Example4">HAnime Açıklama</label>
+                                        <input type="text" id="form3Example4" maxlength="500" name="ha_aciklama" class="form-control" />
+                                        <label class="form-label" for="form3Example4">HAnime Açıklama (Eğer açıklama yoksa boş bırakın)</label>
                                     </div>
                                     <div class="form-outline mb-4">
                                         <input type="text" id="form3Example4" disabled name="ha_yas" class="form-control"required />

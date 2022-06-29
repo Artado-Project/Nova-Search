@@ -99,6 +99,10 @@ if (isset($_POST['ha'])) {
     $version = $fc['version'];
     $allow = 'false';
 
+    if($aciklama == ""){
+        $aciklama = "Bu Hentai'ye ekleyici tarafından bir açıklama eklenmemiştir.";
+    }
+
     // Burada platform ve ip gibi bilgileri güvenlik amacıyla tutmaktayız kesinlikle hiçbir şekilde hiçbir firmaya pazarlanmayacaktır!
 
     $AnimeSay = $db->prepare("SELECT * FROM tarayici_hanime_card_users WHERE user_card_title_ha = ? OR user_card_text_ha = ?");
