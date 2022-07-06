@@ -11,32 +11,29 @@ if(isset($_POST['k'])) {
     if($ksifre != $ksifretekrar){
         echo '<div class="alert alert-warning">Şifreleriniz eşleşmiyor!</div>';
     }else {
-        $EmailSay = $db->prepare("SELECT * FROM tarayici_kayit WHERE uye_email = ?");
-        $EmailSay->execute(array($kemail));
+        $EmailSay = $db->prepare("SELECT * FROM tarayici_kayit WHERE uye_email = ? OR uye_kadi = ?");
+        $EmailSay->execute(array($kemail, $kadi));
         $kontrol = $EmailSay->fetch(PDO::FETCH_ASSOC);
         if($kontrol > 0)
         {
             echo '
                 <div class="alert alert-warning alert-dismissible fade show col-md-12" role="alert">
-                  <strong>Dikkat!</strong> Girmiş olduğunuz email kayıtlıdır.
+                  <strong>Dikkat!</strong> Girmiş olduğunuz email veya kullanıcı adı kayıtlıdır.
                   <button type="button" class="btn-close" data-mdb-dismiss="alert" aria-label="Close"></button>
                 </div>';
         } else{
-            try {
-                $sorgu = $db ->prepare('INSERT INTO tarayici_kayit (uye_kadi, uye_email, uye_sifre, uye_pp, uye_hakkimda) VALUES (?,?,?,?,?)');
-                $ekle = $sorgu ->execute([
-                    $kadi, $kemail, $ksifre, $pp, $hakkimda
-                ]);
-            }catch (Exception $e){
-                echo $e->getMessage();
-            }
+
+            $sorgu = $db ->prepare('INSERT INTO tarayici_kayit (uye_kadi, uye_email, uye_sifre, uye_pp, uye_hakkimda) VALUES (?,?,?,?,?)');
+            $ekle = $sorgu ->execute([
+                $kadi, $kemail, $ksifre, $pp, $hakkimda
+            ]);
+
             if ($ekle) {
                 echo '
                 <div class="alert alert-info alert-dismissible fade show col-md-12" role="alert">
                   Kayıt işlemi <strong>Başarlı!</strong> Sayfa yenileniyor...
                   <button type="button" class="btn-close" data-mdb-dismiss="alert" aria-label="Close"></button>
                 </div>';
-                $_SESSION['isim'] == $kadi;
                 echo '<meta http-equiv="refresh" content="3;url=myacc.php">';
             } else {
                 echo '

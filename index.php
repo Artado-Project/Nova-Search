@@ -165,7 +165,6 @@ require 'php/baglan.php';
         <?php } ?>
     </div>
 
-
         <div class="modal fade" id="modalKayit" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -216,49 +215,14 @@ require 'php/baglan.php';
                                 </form>
                             </div>
                             <div class="tab-pane fade" id="pills-register" role="tabpanel" aria-labelledby="tab-register">
-                                <form method="post">
-
-                                    <div class="form-outline mb-4">
-                                        <input type="text" name="k-kadi" id="registerName" class="form-control" required />
-                                        <label class="form-label" for="registerName">Kullanıcı Adınız</label>
-                                    </div>
-
-                                    <div class="form-outline mb-4">
-                                        <input type="text" id="registerUsername" name="k-email" class="form-control" required />
-                                        <label class="form-label" for="registerUsername">Email Adrresiniz</label>
-                                    </div>
-
-                                    <div class="form-outline mb-4">
-                                        <input type="password" id="registerPassword" name="k-pass" class="form-control" required />
-                                        <label class="form-label" for="registerPassword">Şifreniz</label>
-                                    </div>
-
-                                    <div class="form-outline mb-4">
-                                        <input type="password" id="registerRepeatPassword" name="k-pass-again" class="form-control" required />
-                                        <label class="form-label" for="registerRepeatPassword">Tekrardan Şifreniz</label>
-                                    </div>
-
-                                    <div class="form-check d-flex justify-content-center mb-4">
-                                        <input
-                                                class="form-check-input me-2"
-                                                type="checkbox"
-                                                value=""
-                                                id="registerCheck"
-                                                required
-                                                aria-describedby="registerCheckHelpText"
-                                        />
-                                        <label class="form-check-label" for="registerCheck">
-                                            Kullanım koşullarını kabul ediyorum
-                                        </label>
-                                    </div>
-                                    <button type="submit" class="btn btn-primary btn-block mb-3" name="k">Kayıt Ol</button>
-                                </form>
+                                <div class="alert alert-info">Sayın kullanıcımız. Artado Search ile Nova Search'in Account özelliği birleşmektedir ve şuanda üzerinde çalışılmaktadır. lütfen daha sonra tekrar deneyin.</div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

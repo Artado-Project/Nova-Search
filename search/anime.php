@@ -65,7 +65,7 @@
 						echo '<a href="' . $cikti2['user_link_link'] . '"><div class="btn btn-outline-white" style="border-radius: 100px; margin-left: 3px;" data-ripple-color="dark">' . $cikti2['user_link_name'] . '</div></a>';
 					}
 				}echo '</div>
-    <a class="btn-sm btn-outline-info f-left mb-1 mt-1 text-center align-self-center mx-1" type="button" href="/Nova-Search/anime_hanime_ekle.php" style="max-width: 260px;" data-ripple-color="dark">Sizde sitenizden link koymak istermisiniz?</a>
+    <a class="btn-sm btn-outline-info f-left mb-1 mt-1 text-center align-self-center mx-1" type="button" href="anime_hanime_ekle.php" style="max-width: 260px;" data-ripple-color="dark">Sizde sitenizden link koymak istermisiniz?</a>
     ';
 			}
         }
