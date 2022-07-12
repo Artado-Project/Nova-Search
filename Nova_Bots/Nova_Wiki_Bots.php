@@ -15,7 +15,7 @@ if(isset($_POST['wikipedia'])) {
     $wikipedia_veri = $_POST['w_link'];
     $veri_cek = file_get_contents($wikipedia_veri);
 
-
+    
     $wikipedia_baslik = wiki_veri_al('<h1 id="firstHeading" class="firstHeading mw-first-heading">', '</h1>', $veri_cek);
     $wikipedia_muted = wiki_veri_al('<div class="tagline">', '</div>', $veri_cek);
     //$wikipedia_image = wiki_veri_al('<div class="thumbinner" style="width:222px;">','</a>', $veri_cek);

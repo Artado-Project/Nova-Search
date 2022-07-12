@@ -12,6 +12,10 @@ if(!isset($data)){
 $ara = $db->prepare("SELECT * FROM tarayici_kayit WHERE uye_kadi = '$data'");
 $ara->execute(array());
 $kontrol = $ara->fetch(PDO::FETCH_ASSOC);
+
+if($ara->rowCount() == 0){
+    header('Location: index.php?user=unknow');
+}
 ?>
 <!doctype html>
 <html lang="tr">

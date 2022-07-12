@@ -51,7 +51,7 @@ require 'php/baglan.php';
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <li><a class="dropdown-item bg-light" href="#" style="color: black !important;">'.$_SESSION['isim'].'</a></li>
                         <li><hr class="dropdown-divider" style="color: black !important;" /></li>
-                        <li><a class="dropdown-item" href="myacc.php" style="color: black !important;">Hesabım</a></li>
+                        <li><a class="dropdown-item" href="myacc?user='.$_SESSION['isim'].'" style="color: black !important;">Hesabım</a></li>
                         <li><a class="dropdown-item" style="color: black !important;" href="mailto:ozkayayasin964@gmail.com">İletişim</a></li>
                         <li><a class="dropdown-item" style="color: black !important;" href="php/logout.php">Çıkış</a></li>
                       </ul>';
@@ -64,6 +64,7 @@ require 'php/baglan.php';
         <button class="btn btn-outline-success f-right mx-1 h-25" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" data-ripple-color="dark" aria-controls="offcanvasRight"><i class="bi-list"></i></button>
         <a href="https://www.artadosearch.com/Donate"><div class="btn btn-outline-warning f-right" data-ripple-color="dark">Bağış Yap</div></a>
         <?php
+            require 'php/connection_err.php';
             require 'php/istemci.php';
             require 'php/tema.php';
             require 'Nova_Bots/background.php';
@@ -83,7 +84,6 @@ require 'php/baglan.php';
                <br>
                 <form method="post">
                     <select class="form-select mb-3" aria-label="Default temalar" name="tema">
-
                         <option selected disabled>Temalar</option>
                         <option value="dark">Default: Gece</option>
                         <option value="light">Aydınlık</option>

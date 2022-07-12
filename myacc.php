@@ -2,6 +2,7 @@
 session_start();
     require 'php/baglan.php';
     require 'php/istemci.php';
+    require 'store-sys/store_sys.php';
 
     if(!isset($_SESSION['isim'])){
         header('Location: index.php');
@@ -35,10 +36,7 @@ session_start();
             font-family: 'Quicksand', sans-serif;
         }
         ::-webkit-scrollbar{
-            border-radius: 100px;
-        }
-        ::-webkit-scrollbar-thumb{
-            border: 1px solid #ffffff;
+            display: none;
         }
         .bosluk_button{
             margin-right: 3px;
@@ -48,7 +46,7 @@ session_start();
 <body style="position: relative;">
 
 <div class="container-fluid">
-    <div class="container">
+    <div class="container-sm">
         <?php
         $isim = $_SESSION['isim'];
         ?>
@@ -72,6 +70,7 @@ session_start();
                     <div class="btn mx-1 mb-1 btn-outline-danger" type="button" data-mdb-target="#hesapsilModal" data-mdb-toggle="modal">Hesabı sil</div><br>
                     <div class="btn mx-1 btn-outline-success" type="button" data-mdb-target="#ppModal" data-mdb-toggle="modal">Profil Fotoğrafı</div>
                     <div class="btn mx-1 btn-outline-dark" type="button" data-mdb-target="#hakkimdaModal" data-mdb-toggle="modal">Hakkımda</div>
+                    <div class="btn mx-1 btn-outline-info" type="button" data-mdb-target="#storeModal" data-mdb-toggle="modal">Özel CSS</div>
                 </div>
             </div>
             <div class="col-md-5 card overflow-auto background text-white text-center" style="max-height: 383px;">
@@ -282,6 +281,37 @@ session_start();
                     </div>
                     <div class="d-grid gap-2 d-md-flex justify-content-md-center">
                         <button class="btn btn-outline-success" type="submit" data-mdb-ripple-color="dark" name="hakkimda">Onayla</button>
+                        <button class="btn btn-outline-danger" data-mdb-dismiss="modal" aria-label="Close" type="button">Vazgeç</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div
+    class="modal fade"
+    id="storeModal"
+    data-mdb-backdrop="static"
+    data-mdb-keyboard="false"
+    tabindex="-1"
+    aria-labelledby="staticBackdropLabel"
+    aria-hidden="true"
+>
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-center" id="staticBackdropLabel">Hesap İşlemleri</h5>
+                <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-info mb-2 text-center">Sayın kullanıcımız. yalnızca Artado Store URL'leri kabul edilmektedir.</div>
+                <form method="post">
+                    <div class="input-group mb-4">
+                        <input class="form-control form-icon-trailing"required  name="store_url" type="text" placeholder="Lütfen URL adresinizi girin..." aria-label="Lütfen profil foto. linkini yapıştırın" aria-describedby="icon" />
+                        <span class="input-group-text text-center" id="icon"><i class="bi-person"></i></span>
+                    </div>
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+                        <button class="btn btn-outline-success" type="submit" data-mdb-ripple-color="dark" name="s_u">Kaydet</button>
                         <button class="btn btn-outline-danger" data-mdb-dismiss="modal" aria-label="Close" type="button">Vazgeç</button>
                     </div>
                 </form>

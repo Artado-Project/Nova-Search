@@ -41,23 +41,32 @@ if(isset($_POST['n_u'])){
 if(isset($_POST['pp'])){
     $pp = $_POST['uye_pp'];
     $suan = $_SESSION['isim'];
-    $sorgu = $db->prepare("UPDATE tarayici_kayit SET uye_pp = ? WHERE uye_kadi = '$suan'");
-    $sorgu->bindParam(1, $pp, PDO::PARAM_STR);
-    $sorgu->execute();
 
-    if (isset($sorgu)) {
-        echo'<div class="alert alert-info alert-dismissible fade show col-md-12 f-right" role="alert">
-                  <strong>Başarılı!</strong> Profil Fotoğrafınız değiştirilmiştir.
-                  <button type="button" class="btn-close" data-mdb-dismiss="alert" aria-label="Close"></button>
-                </div>';
-        $_SESSION['pp'] = $pp;
-        echo '<meta http-equiv="refresh" content="3;url=myacc.php">';
-    } else {
-        echo '
-                <div class="alert alert-warning alert-dismissible fade show col-md-12 f-right" role="alert">
-                  <strong>Hata!</strong> Lütfen daha sonra tekrar deneyiniz!
-                  <button type="button" class="btn-close" data-mdb-dismiss="alert" aria-label="Close"></button>
-                </div>';
+    $kontrol = substr($pp, -4);
+    if($kontrol == '.jpg' || $kontrol == '.gif' || $kontrol == '.png' || $kontrol == 'jfif' || $kontrol == 'webp'){
+        $sorgu = $db->prepare("UPDATE tarayici_kayit SET uye_pp = ? WHERE uye_kadi = '$suan'");
+        $sorgu->bindParam(1, $pp, PDO::PARAM_STR);
+        $sorgu->execute();
+    
+        if (isset($sorgu)) {
+            echo'<div class="alert alert-info alert-dismissible fade show col-md-12 f-right" role="alert">
+                      <strong>Başarılı!</strong> Profil Fotoğrafınız değiştirilmiştir.
+                      <button type="button" class="btn-close" data-mdb-dismiss="alert" aria-label="Close"></button>
+                    </div>';
+            $_SESSION['pp'] = $pp;
+            echo '<meta http-equiv="refresh" content="3;url=myacc.php">';
+        } else {
+            echo '
+                    <div class="alert alert-warning alert-dismissible fade show col-md-12 f-right" role="alert">
+                      <strong>Hata!</strong> Lütfen daha sonra tekrar deneyiniz!
+                      <button type="button" class="btn-close" data-mdb-dismiss="alert" aria-label="Close"></button>
+                    </div>';
+        }
+    }else{
+        echo '<div class="alert alert-warning alert-dismissible fade show col-md-12 f-right" role="alert">
+        <strong>Hata!</strong> Geçersiz resim formatı (desteklenen formatlar: .jpg, .gif, .png, .jfif, .webp)
+        <button type="button" class="btn-close" data-mdb-dismiss="alert" aria-label="Close"></button>
+      </div>';
     }
 }
 
