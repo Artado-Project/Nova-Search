@@ -54,7 +54,7 @@ if(isset($_POST['pp'])){
                       <button type="button" class="btn-close" data-mdb-dismiss="alert" aria-label="Close"></button>
                     </div>';
             $_SESSION['pp'] = $pp;
-            echo '<meta http-equiv="refresh" content="3;url=myacc.php">';
+            echo '<meta http-equiv="refresh" content="3;url=myacc?user='.$_SESSION['isim'].'">';
         } else {
             echo '
                     <div class="alert alert-warning alert-dismissible fade show col-md-12 f-right" role="alert">
