@@ -14,7 +14,7 @@ $ara->execute(array());
 $kontrol = $ara->fetch(PDO::FETCH_ASSOC);
 
 if($ara->rowCount() == 0){
-    header('Location: index.php?user=unknow');
+    header('Location: index.php?user=unknow&return_index=true');
 }
 ?>
 <!doctype html>
